@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Quick Funds — EOS Foundation Session | May 25, 2026</title>
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #162234;
+      --navy-light: #1e3050;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --gold-pale: #f5e6b8;
+      --white: #f0f4f8;
+      --text: #d0dbe8;
+      --text-muted: #8fa3b8;
+      --green: #2ecc71;
+      --amber: #f39c12;
+      --red: #e74c3c;
+      --card-bg: #162234;
+      --card-border: rgba(201, 168, 76, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ——— HEADER ——— */
+    header {
+      background: linear-gradient(135deg, #0a1520 0%, var(--navy-light) 100%);
+      border-bottom: 2px solid var(--gold);
+      padding: 50px 40px 40px;
+      text-align: center;
+    }
+    header .label {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    header h1 {
+      font-size: 2.6rem;
+      color: var(--white);
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+    header h1 span { color: var(--gold); }
+    header .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+    .status-badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+    .badge-green { color: var(--green); border-color: var(--green); background: rgba(46,204,113,0.08); }
+    .badge-amber { color: var(--amber); border-color: var(--amber); background: rgba(243,156,18,0.08); }
+    .badge-muted { color: var(--text-muted); border-color: rgba(143,163,184,0.3); }
+
+    /* ——— NAV ——— */
+    nav {
+      background: var(--navy-mid);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 0 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 0;
+      overflow-x: auto;
+    }
+    nav ul li a {
+      display: block;
+      padding: 14px 20px;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav ul li a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ——— LAYOUT ——— */
+    main { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+
+    section { margin-bottom: 80px; }
+    section:last-child { margin-bottom: 0; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .section-number {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 4px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+    h2 {
+      font-size: 1.8rem;
+      color: var(--white);
+      font-weight: normal;
+    }
+    .section-desc {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    /* ——— CARDS ——— */
+    .card-grid {
+      display: grid;
+      gap: 20px;
+    }
+    .card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 28px;
+    }
+    .card-gold { border-left: 3px solid var(--gold); }
+    .card-number {
+      font-family: 'Arial', sans-serif;
+      font-size: 22px;
+      color: var(--gold);
+      font-weight: bold;
+      margin-bottom: 6px;
+      opacity: 0.6;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      font-weight: normal;
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .card .note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .firing-badge {
+      display: inline-block;
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid var(--red);
+      border-radius: 3px;
+      padding: 2px 8px;
+      margin-bottom: 10px;
+    }
+
+    /* ——— CORE FOCUS ——— */
+    .focus-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 36px;
+      margin-bottom: 20px;
+    }
+    .focus-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .focus-quote {
+      font-size: 1.25rem;
+      color: var(--white);
+      line-height: 1.6;
+      border-left: 3px solid var(--gold);
+      padding-left: 20px;
+    }
+    .bridge-diagram {
+      background: rgba(201,168,76,0.05);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 8px;
+      padding: 32px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .bridge-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .bridge-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .bridge-side {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      min-width: 180px;
+    }
+    .bridge-side .side-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Arial', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .bridge-side .side-value {
+      font-size: 1rem;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+    .bridge-side .side-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .bridge-center {
+      padding: 0 20px;
+      text-align: center;
+    }
+    .bridge-center .bridge-name {
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .bridge-arrow {
+      font-size: 28px;
+      color: var(--gold);
+      opacity: 0.5;
+    }
+    .bridge-center .bridge-mechanism {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* ——— ACCOUNTABILITY CHART ——— */
+    .ac-container { }
+    .ac-top-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .ac-seat {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ac-seat-header {
+      background: rgba(201,168,76,0.12);
+      border-bottom: 1px solid var(--card-border);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ac-seat-title {
+      font-size: 1rem;
+      color: var(--gold-light);
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    .ac-seat-person {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .ac-seat-body { padding: 16px 20px; }
+    .ac-accountabilities {
+      list-style: none;
+      margin: 0;
+    }
+    .ac-accountabilities li {
+      font-size: 13px;
+      color: var(--text);
+      padding: 4px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+    .ac-accountabilities li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+    .ac-bottom-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .ac-functional {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ac-functional-header {
+      background: rgba(14,40,70,0.8);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 16px;
+    }
+    .ac-functional-title {
+      font-size: 12px;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .ac-functional-owner {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: 'Arial', sans-serif;
+      margin-top: 2px;
+    }
+    .ac-subfunctions { padding: 12px 16px; }
+    .ac-subfunction {
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+    }
+    .ac-subfunction:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .ac-sub-name {
+      font-size: 12px;
+      color: var(--gold-pale);
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 3px;
+    }
+    .ac-sub-who {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .ac-sub-note {
+      font-size: 11px;
+      color: var(--amber);
+      margin-top: 2px;
+    }
+    .locked-tag {
+      display: inline-block;
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(46,204,113,0.1);
+      color: var(--green);
+      border: 1px solid rgba(46,204,113,0.3);
+      border-radius: 3px;
+      padding: 1px 6px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+    .transition-tag {
+      display: inline-block;
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(243,156,18,0.1);
+      color: var(--amber);
+      border: 1px solid rgba(243,156,18,0.3);
+      border-radius: 3px;
+      padding: 1px 6px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    /* ——— ISSUES ——— */
+    .issue-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .issue-item.priority-high { border-left-color: var(--red); }
+    .issue-item.priority-med { border-left-color: var(--amber); }
+    .issue-item.priority-low { border-left-color: #3498db; }
+    .issue-num {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--text-muted);
+      padding-top: 2px;
+    }
+    .issue-title {
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .issue-desc { font-size: 13px; color: var(--text); }
+    .issue-path {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* ——— NEXT STEPS ——— */
+    .next-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .next-step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 24px;
+      position: relative;
+    }
+    .step-num {
+      font-size: 2.5rem;
+      color: var(--gold);
+      opacity: 0.25;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .step-title {
+      font-size: 1.05rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .step-desc { font-size: 13px; color: var(--text); }
+    .step-timing {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: 'Arial', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ——— FOOTER ——— */
+    footer {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 36px 40px;
+      text-align: center;
+    }
+    footer .footer-title {
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    footer p {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .divider {
+      height: 1px;
+      background: rgba(201,168,76,0.1);
+      margin: 60px 0;
+    }
+
+    @media (max-width: 700px) {
+      header { padding: 36px 20px 28px; }
+      header h1 { font-size: 1.8rem; }
+      main { padding: 40px 20px; }
+      nav { padding: 0 12px; }
+      .ac-top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="label">EOS Foundation Session</div>
+  <h1>Real Quick <span>Funds</span></h1>
+  <div class="subtitle">Vision / Traction Organizer — Working Draft &nbsp;·&nbsp; May 25, 2026</div>
+  <div class="status-badges">
+    <span class="badge badge-green">✓ Core Values — Locked</span>
+    <span class="badge badge-green">✓ Core Focus — Locked</span>
+    <span class="badge badge-amber">⟳ Accountability Chart — Draft</span>
+    <span class="badge badge-muted">○ 10-Year Target — Pending</span>
+    <span class="badge badge-muted">○ Scorecard — Pending</span>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#core-values">Core Values</a></li>
+    <li><a href="#core-focus">Core Focus</a></li>
+    <li><a href="#accountability">Accountability Chart</a></li>
+    <li><a href="#issues">Key Issues</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ===================== CORE VALUES ===================== -->
+  <section id="core-values">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Core Values</h2>
+    </div>
+    <p class="section-desc">Authentic, not aspirational — these describe who RQF already is at its best. We hire, fire, reward, and recognize based on these five values.</p>
+
+    <div class="card-grid card-grid-3">
+
+      <div class="card card-gold">
+        <div class="card-number">01</div>
+        <div class="firing-badge">Immediate Firing Offense</div>
+        <h3>Integrity</h3>
+        <p>Ethical conduct in every transaction — including protecting parties we are not obligated to protect. Zero tolerance for internal dishonesty or cover-ups.</p>
+        <p class="note">The only hard-line immediate termination standard. All other values: coach first. This one: no second chance.</p>
+      </div>
+
+      <div class="card card-gold">
+        <div class="card-number">02</div>
+        <h3>Stewardship</h3>
+        <p>Responsible management of capital, relationships, and business operations. RQF operates as a fiduciary in practice — for fund investors, for clients' deals, and for internal records.</p>
+        <p class="note">Transparency earns trust. Trust earns more capital access.</p>
+      </div>
+
+      <div class="card card-gold">
+        <div class="card-number">03</div>
+        <h3>Diligence</h3>
+        <p>Rigorous adherence to process and fiduciary responsibility. Proactive vigilance that supersedes process — you don't wait for a checklist to tell you something is wrong.</p>
+        <p class="note">Born from experience: missing steps cost the company ~$50K on a deal with forged signatures. This value exists because of that.</p>
+      </div>
+
+      <div class="card card-gold">
+        <div class="card-number">04</div>
+        <h3>Urgency</h3>
+        <p>Every deal is treated like it can't wait. Speed and availability are both expressions of this value. If someone can't develop urgency, it is ultimately a fireable offense.</p>
+        <p class="note">Distinction: Speed = table stakes (Three Uniques). Urgency = the internal disposition that produces speed. Two different things.</p>
+      </div>
+
+      <div class="card card-gold">
+        <div class="card-number">05</div>
+        <h3>Extra Mile <span style="font-size:11px; color:var(--text-muted);">(working label)</span></h3>
+        <p>You see something and you act — for a teammate, a client, a competitor, the community — without being asked. Goes beyond what's required in every direction.</p>
+        <p class="note">Label may still evolve. Closest character references: Good Samaritan, Sam Gamgee (LOTR). "Go-Giver" resonates but is overused in this ecosystem.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== CORE FOCUS ===================== -->
+  <section id="core-focus">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Core Focus</h2>
+    </div>
+    <p class="section-desc">Two sentences. Maximum. This is your lane — everything else is a distraction.</p>
+
+    <div class="focus-block">
+      <div class="focus-label">Purpose / Cause / Passion</div>
+      <div class="focus-quote">"To bridge protected capital and creative real estate opportunity — where investors earn exceptional returns and borrowers do more deals."</div>
+    </div>
+
+    <div class="focus-block">
+      <div class="focus-label">Niche</div>
+      <div class="focus-quote">"Escrowed transactional funding for creative real estate investors — powered by private capital earning institutional-level returns at bond-level risk."</div>
+    </div>
+
+    <div class="bridge-diagram">
+      <div class="bridge-label">The Two-Sided Bridge — How RQF Works</div>
+      <div class="bridge-row">
+        <div class="bridge-side">
+          <div class="side-title">Fund Investors</div>
+          <div class="side-value">12% Annual Returns</div>
+          <div class="side-sub">At bond-level risk via escrow protection. Capital contractually cannot leave escrow without returning to RQF.</div>
+        </div>
+        <div class="bridge-center">
+          <div class="bridge-arrow">←</div>
+          <div><span class="bridge-name">Real Quick Funds</span><span class="bridge-mechanism">Escrow-secured transactional capital</span></div>
+          <div class="bridge-arrow">→</div>
+        </div>
+        <div class="bridge-side">
+          <div class="side-title">Borrowers</div>
+          <div class="side-value">Fast, Flexible Capital</div>
+          <div class="side-sub">EMD, double close, Morby/echo/stack methods. Structures traditional lenders won't touch.</div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:20px; font-family:Arial,sans-serif;">Deal type selection is driven by escrow security requirements — investor protection comes first, which defines the borrower products RQF can offer.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== ACCOUNTABILITY CHART ===================== -->
+  <section id="accountability">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Accountability Chart</h2>
+    </div>
+    <p class="section-desc">Seats first, people second. One owner per seat. This is a draft — to be finalized in joint session with Justin. Not an org chart: it defines what each seat is accountable for, not just who reports to whom.</p>
+
+    <!-- Top Level: Visionary + Integrator -->
+    <div class="ac-top-row" style="margin-bottom:20px;">
+      <div class="ac-seat">
+        <div class="ac-seat-header">
+          <div class="ac-seat-title">Visionary</div>
+          <div class="ac-seat-person">Paul Brown</div>
+        </div>
+        <div class="ac-seat-body">
+          <ul class="ac-accountabilities">
+            <li>Company vision, culture, and strategic direction</li>
+            <li>Key external relationships (Gator, Sub2, Morby ecosystem)</li>
+            <li>Capital raising relationships &amp; fund GP role</li>
+            <li>Personal brand and community evangelism</li>
+            <li>Systems architecture &amp; AI automation <span class="transition-tag">Transition</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ac-seat">
+        <div class="ac-seat-header">
+          <div class="ac-seat-title">Integrator</div>
+          <div class="ac-seat-person">Justin Pilakka</div>
+        </div>
+        <div class="ac-seat-body">
+          <ul class="ac-accountabilities">
+            <li>P&amp;L ownership and financial accountability</li>
+            <li>Team accountability and performance</li>
+            <li>L10 meeting facilitation</li>
+            <li>Rocks and Scorecard oversight</li>
+            <li>Blocker removal — keeps operations moving</li>
+          </ul>
+          <p style="font-size:11px;color:var(--text-muted);font-style:italic;margin-top:10px;">At current scale, Integrator seat = Head of Lending Operations (same seat, one person). Separates as team grows and AI absorbs execution.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Functional Seats Row -->
+    <div class="ac-bottom-row">
+
+      <!-- Lending Operations -->
+      <div class="ac-functional">
+        <div class="ac-functional-header">
+          <div class="ac-functional-title">Lending Operations</div>
+          <div class="ac-functional-owner">Owner: Justin &nbsp;|&nbsp; Staff: Manoella, Alana</div>
+        </div>
+        <div class="ac-subfunctions">
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Deal Communication</div>
+            <div class="ac-sub-who">Justin + Paul + Alana</div>
+            <div class="ac-sub-note">⟳ Alana taking over (60–90 day transition)</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Deal Processing</div>
+            <div class="ac-sub-who">Manoella (primary)</div>
+            <div class="ac-sub-who">In-system entry, documentation, validation, compliance</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Wire Authorization</div>
+            <div class="ac-sub-who">Justin + Paul ONLY</div>
+            <div class="ac-sub-note">🔒 Permanent internal control — never delegated</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Collections &amp; Recovery</div>
+            <div class="ac-sub-who">Manoella + Alana</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acquisitions -->
+      <div class="ac-functional">
+        <div class="ac-functional-header">
+          <div class="ac-functional-title">Acquisitions</div>
+          <div class="ac-functional-owner">Owner: Paul (transitioning) &nbsp;|&nbsp; Angel + bird dogs</div>
+        </div>
+        <div class="ac-subfunctions">
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Cold Outreach</div>
+            <div class="ac-sub-who">Paul + Justin + bird dogs</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Social Media</div>
+            <div class="ac-sub-who">Paul creates · Angel distributes · bird dogs replicate</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">In-Person &amp; Events</div>
+            <div class="ac-sub-who">Paul + Justin</div>
+            <div class="ac-sub-who">Dual purpose: deal origination + capital leads</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Bird Dog / Orbit Community</div>
+            <div class="ac-sub-who">Paul (manages community)</div>
+            <div class="ac-sub-who">Force multiplier for all 3 channels above</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capital Management -->
+      <div class="ac-functional">
+        <div class="ac-functional-header">
+          <div class="ac-functional-title">Capital Management</div>
+          <div class="ac-functional-owner">Owner: Paul (by design — permanent)</div>
+        </div>
+        <div class="ac-subfunctions">
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Capital Relationships</div>
+            <div class="ac-sub-who">Paul</div>
+            <div class="ac-sub-who">Private individuals, quick-deployment sources</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Fund Coordination</div>
+            <div class="ac-sub-who">Paul</div>
+            <div class="ac-sub-who">Pinecone Capital / ResGAP Plus LP drawdowns &amp; base capital</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Capital Planning</div>
+            <div class="ac-sub-who">Paul + Justin (aligned weekly)</div>
+            <div class="ac-sub-who">Deal flow velocity vs. capital availability; cost optimization</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back Office -->
+      <div class="ac-functional">
+        <div class="ac-functional-header">
+          <div class="ac-functional-title">Back Office &amp; Systems</div>
+          <div class="ac-functional-owner">Owner: Paul (transitioning) &nbsp;|&nbsp; Roz + Christina + outsourced</div>
+        </div>
+        <div class="ac-subfunctions">
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Bookkeeping &amp; Accounting</div>
+            <div class="ac-sub-who">AI system (building) · Christina (admin)</div>
+            <div class="ac-sub-note">⟳ Exit path: AI system complete Q3</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Tax &amp; CPA</div>
+            <div class="ac-sub-who">Outsourced</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">Legal &amp; Compliance</div>
+            <div class="ac-sub-who">Outsourced</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">IT &amp; Systems</div>
+            <div class="ac-sub-who">Roz (contractor)</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">AI &amp; Automation Development</div>
+            <div class="ac-sub-who">Paul (currently)</div>
+            <div class="ac-sub-note">⟳ Future hire needed — distinct from IT maintenance</div>
+          </div>
+          <div class="ac-subfunction">
+            <div class="ac-sub-name">HR &amp; Contractor Management</div>
+            <div class="ac-sub-who">Shared / transitioning</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end ac-bottom-row -->
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== KEY ISSUES ===================== -->
+  <section id="issues">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Key Issues</h2>
+    </div>
+    <p class="section-desc">Captured from today's session. These go on the Issues List — not solved yet. IDS happens in L10 meetings once the system is running.</p>
+
+    <div class="issue-item priority-high">
+      <div class="issue-num">1</div>
+      <div>
+        <div class="issue-title">Paul is in too many operational seats</div>
+        <div class="issue-desc">Lending Ops, Back Office, AI Development, and Acquisitions all have Paul filling gaps he shouldn't own long-term. The business can't scale if the Visionary is running operations.</div>
+        <div class="issue-path">Path forward: Alana for Deal Communication (60–90 days) · AI system for bookkeeping (Q3 Rock) · Christina for Back Office admin</div>
+      </div>
+    </div>
+
+    <div class="issue-item priority-high">
+      <div class="issue-num">2</div>
+      <div>
+        <div class="issue-title">AI & Automation Development has no owner or exit path</div>
+        <div class="issue-desc">Paul is building the AI/automation infrastructure — Claude integrations, bookkeeping tools, workflow automation. This is consuming significant Visionary hours with no handoff plan.</div>
+        <div class="issue-path">Proposed Q3 Rock: "Build and document AI/automation stack, transition ownership by September 30."</div>
+      </div>
+    </div>
+
+    <div class="issue-item priority-med">
+      <div class="issue-num">3</div>
+      <div>
+        <div class="issue-title">Justin's W2 capacity constraint — transition clock is running</div>
+        <div class="issue-desc">Justin needs 6 consecutive months of >$20K net profit before going full-time. Clock started April 2026. Earliest full-time = October 2026. Rocks and meeting structure must respect his 8–12 hour/week bandwidth until then.</div>
+        <div class="issue-path">Revenue trajectory is strong — this may be on track by Q4 2026.</div>
+      </div>
+    </div>
+
+    <div class="issue-item priority-med">
+      <div class="issue-num">4</div>
+      <div>
+        <div class="issue-title">Alana onboarding — Deal Communication transition</div>
+        <div class="issue-desc">Alana is the new hire intended to take over inbound/outbound deal communication. 60–90 day transition requires: deal scripts, process documentation, shadowing protocol, and handoff metrics.</div>
+        <div class="issue-path">Owner: Justin. Needs explicit onboarding plan.</div>
+      </div>
+    </div>
+
+    <div class="issue-item priority-low">
+      <div class="issue-num">5</div>
+      <div>
+        <div class="issue-title">Fund Accountability Chart — separate document needed</div>
+        <div class="issue-desc">Pinecone Capital / ResGAP Plus LP is a separate SEC-regulated entity with its own compliance requirements. It needs a simple 3-seat Accountability Chart distinct from the RQF operating chart.</div>
+        <div class="issue-path">3 seats: Capital Raising · Fund Management · Investment Committee (Justin must be second member per SEC compliance).</div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===================== NEXT STEPS ===================== -->
+  <section id="next-steps">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2>Next Steps</h2>
+    </div>
+    <p class="section-desc">The EOS implementation sequence. Nothing happens out of order — each step unlocks the next.</p>
+
+    <div class="next-steps-grid">
+
+      <div class="next-step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Complete V/TO Sections 3 &amp; 4</div>
+        <div class="step-desc">10-Year Target (one bold, specific, measurable goal) and Marketing Strategy (Target Market, Three Uniques, Proven Process, Guarantee). Paul drafts solo first.</div>
+        <div class="step-timing">This week · Paul solo</div>
+      </div>
+
+      <div class="next-step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Justin Session — V/TO Review + Accountability Chart</div>
+        <div class="step-desc">90-minute working session. Paul brings the V/TO draft. Walk Core Values + Core Focus together. Build the Accountability Chart jointly. This is not a co-leadership conversation — it's a building session.</div>
+        <div class="step-timing">This week or next · Paul + Justin</div>
+      </div>
+
+      <div class="next-step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Activate Lisa (Owner's Club EOS)</div>
+        <div class="step-desc">Book a session with Lisa after V/TO + Accountability Chart are drafted. Use her for formal EOS kickoff, Scorecard design, and Issues List seeding.</div>
+        <div class="step-timing">After Justin session</div>
+      </div>
+
+      <div class="next-step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Build the Scorecard</div>
+        <div class="step-desc">5–15 weekly leading indicators with Red/Green targets. Likely metrics: deal inquiries/week · deals funded/week · weekly revenue · active borrower relationships · Gator referral conversations.</div>
+        <div class="step-timing">Phase 2 · Days 30–60</div>
+      </div>
+
+      <div class="next-step-card">
+        <div class="step-num">5</div>
+        <div class="step-title">Lock Q3 2026 Rocks</div>
+        <div class="step-desc">3–7 priorities for July 1 – September 30. One owner each. 90-day completable. Key candidates: AI/automation stack handoff, Alana full onboarding, Scorecard running for 30 days, Fund Accountability Chart.</div>
+        <div class="step-timing">Phase 2 · Days 30–60</div>
+      </div>
+
+      <div class="next-step-card">
+        <div class="step-num">6</div>
+        <div class="step-title">First L10 Meeting</div>
+        <div class="step-desc">Cannot start until V/TO is 80%+ complete AND Accountability Chart is finalized. 90 minutes, strict agenda. Run every week without exception — a missed L10 goes on the Issues List.</div>
+        <div class="step-timing">Phase 3 · Days 60–90</div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-title">Real Quick Funds — EOS Foundation</div>
+  <p>Session date: May 25, 2026 &nbsp;·&nbsp; Visionary: Paul Brown &nbsp;·&nbsp; Integrator (designate): Justin Pilakka</p>
+  <p style="margin-top:8px;">V/TO Status: Core Values ✓ · Core Focus ✓ · Accountability Chart (draft) · Sections 3–8 pending</p>
+  <p style="margin-top:12px; font-style:italic; opacity:0.5;">This document is a working draft. Nothing is final until both Paul and Justin have reviewed and agreed.</p>
+</footer>
+
+</body>
+</html>
