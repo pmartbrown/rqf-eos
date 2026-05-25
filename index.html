@@ -132,12 +132,13 @@
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       box-shadow: 0 1px 0 rgba(12,20,34,0.04);
+      overflow-x: auto;
     }
-    nav ul { display: flex; list-style: none; justify-content: center; padding: 0 32px; gap: 4px; }
+    nav ul { display: flex; list-style: none; justify-content: center; padding: 0 16px; gap: 2px; min-width: max-content; margin: 0 auto; }
     nav a {
       display: block;
-      padding: 14px 18px;
-      font-size: 12px;
+      padding: 13px 14px;
+      font-size: 11.5px;
       font-weight: 500;
       letter-spacing: 0.2px;
       text-decoration: none;
@@ -149,7 +150,7 @@
     nav a::after {
       content: '';
       position: absolute;
-      bottom: 0; left: 18px; right: 18px;
+      bottom: 0; left: 14px; right: 14px;
       height: 2px;
       background: var(--accent);
       border-radius: 2px 2px 0 0;
@@ -201,6 +202,22 @@
       margin-bottom: 32px;
       line-height: 1.6;
     }
+
+    /* ── DRAFT BANNER ────────────────────────── */
+    .draft-banner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--amber-bg);
+      border: 1px solid var(--amber-border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 28px;
+      font-size: 12.5px;
+      color: var(--amber);
+    }
+    .draft-banner strong { font-weight: 600; }
+    .draft-icon { font-size: 15px; flex-shrink: 0; }
 
     /* ── CORE VALUES ─────────────────────────── */
     .value-list { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
@@ -360,6 +377,327 @@
       border-top: 1px solid var(--border);
     }
 
+    /* ── 10-YEAR TARGET ──────────────────────── */
+    .target-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .target-opt {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 22px;
+      cursor: default;
+      transition: border-color .18s, box-shadow .18s;
+    }
+    .target-opt.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+    .target-opt-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 10px;
+    }
+    .target-opt.active .target-opt-label { color: var(--accent); }
+    .target-opt-text {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .target-opt.active .target-opt-text { color: var(--text); font-weight: 500; }
+    .target-working {
+      background: var(--accent-light);
+      border: 1px solid rgba(184,144,10,0.3);
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 13px;
+      color: var(--accent-dark);
+      margin-top: 8px;
+    }
+    .target-working strong { font-weight: 600; }
+
+    /* ── MARKETING STRATEGY ──────────────────── */
+    .mkt-parts { display: flex; flex-direction: column; gap: 28px; }
+    .mkt-part {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
+    }
+    .mkt-head {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .mkt-head-n {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: .22;
+      line-height: 1;
+    }
+    .mkt-head-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .mkt-body { padding: 24px 28px; }
+    .mkt-body p { font-size: 14px; color: var(--text-2); line-height: 1.72; }
+
+    .uniques-list { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+    .unique-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .unique-n {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 1px solid rgba(184,144,10,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .unique-content { flex: 1; }
+    .unique-title { font-size: 14.5px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .unique-body { font-size: 13.5px; color: var(--text-2); line-height: 1.65; }
+
+    .process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 4px; }
+    .process-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .process-step:last-child { border-bottom: none; }
+    .ps-n {
+      width: 28px; height: 28px;
+      border-radius: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .ps-content { flex: 1; }
+    .ps-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .ps-desc { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+    .guar-card {
+      background: linear-gradient(135deg, rgba(184,144,10,0.07) 0%, rgba(184,144,10,0.02) 100%);
+      border: 1px solid rgba(184,144,10,0.22);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 22px 24px;
+      font-size: 1.02rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.72;
+    }
+
+    /* ── 3-YEAR PICTURE ──────────────────────── */
+    .picture-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .pic-metric {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 0 0 10px 10px;
+      padding: 18px 18px;
+      box-shadow: var(--shadow-xs);
+    }
+    .pic-metric-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 8px;
+    }
+    .pic-metric-val {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .pic-metric-sub { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+    .picture-story {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow-xs);
+    }
+    .picture-story-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 14px;
+    }
+    .picture-story p {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+
+    /* ── 1-YEAR PLAN ─────────────────────────── */
+    .plan-layout { display: grid; grid-template-columns: 240px 1fr; gap: 14px; }
+    .plan-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .plan-metric {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow-xs);
+    }
+    .plan-metric-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 6px;
+    }
+    .plan-metric-val {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+    .plan-metric-sub { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+
+    .plan-goals-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow-xs);
+    }
+    .plan-goals-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .plan-goal {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .plan-goal:last-child { border-bottom: none; }
+    .plan-goal-n {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: .22;
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 22px;
+      padding-top: 2px;
+    }
+    .plan-goal-content { flex: 1; }
+    .plan-goal-title { font-size: 14.5px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .plan-goal-body { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+    /* ── Q3 ROCKS ────────────────────────────── */
+    .rocks-list { display: flex; flex-direction: column; gap: 10px; }
+    .rock-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      display: grid;
+      grid-template-columns: 1fr 140px 120px;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--shadow-xs);
+      transition: box-shadow .15s;
+    }
+    .rock-item:hover { box-shadow: var(--shadow); }
+    .rock-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .rock-owner {
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .rock-owner-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--faint);
+      flex-shrink: 0;
+    }
+    .rock-status {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+    .rs-pending { color: var(--muted); border-color: var(--border-mid); background: var(--surface-2); }
+    .rs-progress { color: var(--amber); border-color: var(--amber-border); background: var(--amber-bg); }
+    .rs-done { color: var(--green); border-color: var(--green-border); background: var(--green-bg); }
+
+    .rocks-header {
+      display: grid;
+      grid-template-columns: 1fr 140px 120px;
+      gap: 20px;
+      padding: 0 22px 10px;
+    }
+    .rocks-header span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
     /* ── ACCOUNTABILITY CHART ────────────────── */
     .ac-leadership {
       display: grid;
@@ -422,6 +760,31 @@
       line-height: 1.55;
     }
 
+    /* Org chart grouping for function cards */
+    .ac-fn-groups {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .ac-fn-group {}
+    .ac-fn-group-hdr {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 8px;
+      padding: 0 2px;
+    }
+    .ac-fn-group-hdr em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .ac-fn-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
     .ac-functions {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -518,63 +881,25 @@
       line-height: 1.6;
     }
 
-    /* ── NEXT STEPS ──────────────────────────── */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .step {
+    /* ── SCORECARD PLACEHOLDER ───────────────── */
+    .scorecard-placeholder {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 2px dashed var(--border-mid);
       border-radius: 12px;
-      padding: 26px 26px 22px;
-      box-shadow: var(--shadow-xs);
-      transition: box-shadow .2s, transform .2s, border-color .2s;
-      position: relative;
-      overflow: hidden;
+      padding: 48px 40px;
+      text-align: center;
     }
-    .step::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity .2s;
-    }
-    .step:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--border-mid); }
-    .step:hover::before { opacity: 1; }
-    .step-n {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--accent);
-      opacity: .13;
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-    .step-title {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 8px;
-      letter-spacing: -0.2px;
-      line-height: 1.4;
-    }
-    .step-body { font-size: 13px; color: var(--text-2); line-height: 1.65; }
-    .step-when {
-      display: inline-block;
-      margin-top: 16px;
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
+    .sc-icon { font-size: 2.5rem; margin-bottom: 14px; opacity: .35; }
+    .sc-title { font-size: 1rem; font-weight: 600; color: var(--text-2); margin-bottom: 8px; }
+    .sc-body { font-size: 13.5px; color: var(--muted); line-height: 1.7; max-width: 500px; margin: 0 auto; }
+    .sc-metrics { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 20px; }
+    .sc-tag {
+      font-size: 11.5px;
       color: var(--muted);
-      background: var(--bg);
+      background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: 100px;
-      padding: 3px 10px;
+      padding: 4px 12px;
     }
 
     /* ── FOOTER ──────────────────────────────── */
@@ -603,26 +928,44 @@
       margin: 72px 0;
     }
 
+    /* ── INLINE NOTE ─────────────────────────── */
+    .inline-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      font-style: italic;
+      padding: 10px 16px;
+      background: var(--surface-2);
+      border-radius: 6px;
+      border-left: 3px solid var(--border-mid);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
     /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 1000px) {
+      .picture-metrics { grid-template-columns: repeat(2, 1fr); }
+      .plan-layout { grid-template-columns: 1fr; }
+    }
     @media (max-width: 900px) {
       .focus-pair { grid-template-columns: 1fr; }
       .ac-leadership { grid-template-columns: 1fr; }
-      .ac-functions { grid-template-columns: 1fr 1fr; }
-      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .ac-fn-groups { grid-template-columns: 1fr; }
       .bridge-row { grid-template-columns: 1fr; }
       .value-row { grid-template-columns: 40px 1fr; }
       .val-left { grid-column: 2; border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 12px; }
       .val-right { grid-column: 2; padding-left: 0; }
+      .target-options { grid-template-columns: 1fr; }
+      .rock-item { grid-template-columns: 1fr; gap: 8px; }
     }
     @media (max-width: 640px) {
       header { padding: 40px 24px 32px; }
       header h1 { font-size: 2.2rem; }
       main { padding: 48px 20px 72px; }
-      nav ul { justify-content: flex-start; overflow-x: auto; padding: 0 12px; gap: 0; }
-      .ac-functions { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: 1fr; }
+      nav ul { justify-content: flex-start; gap: 0; }
+      .ac-fn-cols { grid-template-columns: 1fr; }
       .value-row { grid-template-columns: 1fr; }
       .val-num { display: none; }
+      .picture-metrics { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -638,9 +981,9 @@
   <div class="badges">
     <span class="badge b-green"><span class="badge-dot"></span> Core Values — Locked</span>
     <span class="badge b-green"><span class="badge-dot"></span> Core Focus — Locked</span>
+    <span class="badge b-amber"><span class="badge-dot"></span> V/TO Sections 3–8 — Working Draft</span>
     <span class="badge b-amber"><span class="badge-dot"></span> Accountability Chart — Draft</span>
-    <span class="badge b-muted"><span class="badge-dot"></span> 10-Year Target — Pending</span>
-    <span class="badge b-muted"><span class="badge-dot"></span> Rocks &amp; Scorecard — Pending</span>
+    <span class="badge b-muted"><span class="badge-dot"></span> Scorecard — Not Started</span>
   </div>
 </header>
 
@@ -649,9 +992,14 @@
   <ul>
     <li><a href="#values">Core Values</a></li>
     <li><a href="#focus">Core Focus</a></li>
-    <li><a href="#chart">Accountability Chart</a></li>
-    <li><a href="#issues">Key Issues</a></li>
-    <li><a href="#next">Next Steps</a></li>
+    <li><a href="#target">10-Year Target</a></li>
+    <li><a href="#marketing">Marketing</a></li>
+    <li><a href="#picture">3-Year Picture</a></li>
+    <li><a href="#plan">1-Year Plan</a></li>
+    <li><a href="#rocks">Q3 Rocks</a></li>
+    <li><a href="#chart">Acct Chart</a></li>
+    <li><a href="#issues">Issues List</a></li>
+    <li><a href="#scorecard">Scorecard</a></li>
   </ul>
 </nav>
 
@@ -775,14 +1123,391 @@
 
   <div class="div"></div>
 
-  <!-- ══════════════════ ACCOUNTABILITY CHART ══════════════════ -->
-  <section id="chart">
+  <!-- ══════════════════ 10-YEAR TARGET ══════════════════ -->
+  <section id="target">
     <div class="sec-label">
       <span class="sec-tag">03</span>
       <div class="sec-line"></div>
     </div>
+    <h2>10-Year Target</h2>
+    <p class="sec-desc">One bold, specific, measurable goal. Big but believable. Every person on the team should be able to recite it.</p>
+
+    <div class="draft-banner">
+      <span class="draft-icon">⚡</span>
+      <div><strong>Working Draft — Needs Paul's Decision.</strong> Three options below. Pick the one that lands, or blend them. The working assumption is Option A until you say otherwise.</div>
+    </div>
+
+    <div class="target-options">
+      <div class="target-opt active">
+        <div class="target-opt-label">Option A — Working Assumption</div>
+        <div class="target-opt-text">"RQF generates $5M+ in annual revenue with a team of 5 or fewer — the first call in the creative real estate community when a deal needs capital."</div>
+      </div>
+      <div class="target-opt">
+        <div class="target-opt-label">Option B — Volume Milestone</div>
+        <div class="target-opt-text">"Fund $500M in lifetime transactions. The most trusted transactional capital source in the Gator/Sub2/Morby ecosystem."</div>
+      </div>
+      <div class="target-opt">
+        <div class="target-opt-label">Option C — Personal + Business</div>
+        <div class="target-opt-text">"$5M annual revenue. 5 people. Paul and Justin both financially free — the business runs without them in the room."</div>
+      </div>
+    </div>
+
+    <div class="inline-note">Context: Paul's personal goal is $100K/month passive income. At $5M annual RQF revenue with 60%+ margins, that math works. The "5 people or fewer" constraint is deliberate — this is not a headcount-growth company. Justin's full-time transition threshold is 6 consecutive months at &gt;$20K net profit (clock started April 2026).</div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- ══════════════════ MARKETING STRATEGY ══════════════════ -->
+  <section id="marketing">
+    <div class="sec-label">
+      <span class="sec-tag">04</span>
+      <div class="sec-line"></div>
+    </div>
+    <h2>Marketing Strategy</h2>
+    <p class="sec-desc">Four components. Each one should be tight and specific. This is how RQF wins its ideal clients and turns away the wrong ones.</p>
+
+    <div class="draft-banner">
+      <span class="draft-icon">⚡</span>
+      <div><strong>Working Draft — Drafted from session context.</strong> Needs Paul + Justin review. Speed as a Unique is intentional — it's table stakes externally even though it's not a Core Value internally.</div>
+    </div>
+
+    <div class="mkt-parts">
+
+      <div class="mkt-part">
+        <div class="mkt-head">
+          <span class="mkt-head-n">1</span>
+          <span class="mkt-head-title">Target Market — The List</span>
+        </div>
+        <div class="mkt-body">
+          <p>Creative real estate investors who are already fluent in non-traditional financing — specifically active Gator method operators, subject-to and seller finance buyers, double-close wholesalers, and Morby/Stack/Echo method practitioners. Primary fishing pond: Pace Morby's Gator community, Sub2 Owners Club, Owner's Club, and local creative finance networks across the US.</p>
+          <p style="margin-top:12px;">These investors already understand the deal structure. RQF doesn't educate them on how creative finance works — we fund it. The secondary market is capital investors: high-net-worth individuals seeking 12%+ annual returns at bond-level risk through the fund.</p>
+        </div>
+      </div>
+
+      <div class="mkt-part">
+        <div class="mkt-head">
+          <span class="mkt-head-n">2</span>
+          <span class="mkt-head-title">Three Uniques</span>
+        </div>
+        <div class="mkt-body">
+          <div class="uniques-list">
+            <div class="unique-item">
+              <div class="unique-n">1</div>
+              <div class="unique-content">
+                <div class="unique-title">Speed that doesn't sleep</div>
+                <div class="unique-body">Same-day decisions. Next-day wires. Every deal is treated like it closes tomorrow — because it probably does. Our response time is a competitive advantage for every borrower we work with.</div>
+              </div>
+            </div>
+            <div class="unique-item">
+              <div class="unique-n">2</div>
+              <div class="unique-content">
+                <div class="unique-title">We speak your language</div>
+                <div class="unique-body">The only transactional funder fluent in Gator, Sub2, Morby, echo, and stack method deals. You don't have to explain the structure or educate the capital source. We already know. We just fund it.</div>
+              </div>
+            </div>
+            <div class="unique-item">
+              <div class="unique-n">3</div>
+              <div class="unique-content">
+                <div class="unique-title">Relationship capital</div>
+                <div class="unique-body">You get Paul or Justin on the phone. Not a call center, not a portal, not a "submit and wait." RQF invests in the relationship across every deal — our borrowers become long-term partners, not one-off transactions.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mkt-part">
+        <div class="mkt-head">
+          <span class="mkt-head-n">3</span>
+          <span class="mkt-head-title">Proven Process — The RQF Bridge</span>
+        </div>
+        <div class="mkt-body">
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="ps-n">1</div>
+              <div class="ps-content">
+                <div class="ps-name">Connect</div>
+                <div class="ps-desc">Reach out through community, referral, or direct. 15-minute call to understand the deal and structure.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-n">2</div>
+              <div class="ps-content">
+                <div class="ps-name">Qualify</div>
+                <div class="ps-desc">Deal structure review: escrow security, timeline, deal type, amounts. Decision made same day.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-n">3</div>
+              <div class="ps-content">
+                <div class="ps-name">Commit</div>
+                <div class="ps-desc">Wire details confirmed, docs aligned with title and escrow. Paul or Justin signs off personally.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-n">4</div>
+              <div class="ps-content">
+                <div class="ps-name">Fund</div>
+                <div class="ps-desc">Capital deployed into escrow. Deal can close. Borrower has what they need.</div>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="ps-n">5</div>
+              <div class="ps-content">
+                <div class="ps-name">Close &amp; Return</div>
+                <div class="ps-desc">Deal executes. Capital returns to RQF. Relationship deepens — next deal conversation starts here.</div>
+              </div>
+            </div>
+          </div>
+          <div class="inline-note">"The RQF Bridge" ties directly to the Core Focus bridge metaphor. Alternative: "The Fast Bridge." Confirm the name with Justin.</div>
+        </div>
+      </div>
+
+      <div class="mkt-part">
+        <div class="mkt-head">
+          <span class="mkt-head-n">4</span>
+          <span class="mkt-head-title">Guarantee</span>
+        </div>
+        <div class="mkt-body">
+          <div class="guar-card">
+            "If your deal is in escrow and the structure qualifies — we fund it, or we tell you why it doesn't within 2 hours. No ghosting. No runaround. No surprises at the wire."
+          </div>
+          <div class="inline-note">This makes RQF's implicit promise explicit. "No ghosting" is a known frustration in the Gator community — naming it is a direct competitive shot. The 2-hour standard creates an internal accountability bar.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- ══════════════════ 3-YEAR PICTURE ══════════════════ -->
+  <section id="picture">
+    <div class="sec-label">
+      <span class="sec-tag">05</span>
+      <div class="sec-line"></div>
+    </div>
+    <h2>3-Year Picture</h2>
+    <p class="sec-desc">A vivid, specific picture of RQF in May 2029. Revenue, team, volume, operations. Be specific enough that you'd know if you got there.</p>
+
+    <div class="draft-banner">
+      <span class="draft-icon">⚡</span>
+      <div><strong>Working Draft — Drafted from session context.</strong> Numbers are working assumptions based on stated vision ("a few million, 5 people or fewer, AI-leveraged"). Confirm targets with Justin.</div>
+    </div>
+
+    <div class="picture-metrics">
+      <div class="pic-metric">
+        <div class="pic-metric-label">Annual Revenue</div>
+        <div class="pic-metric-val">$3M+</div>
+        <div class="pic-metric-sub">≈ $250K+/month run rate</div>
+      </div>
+      <div class="pic-metric">
+        <div class="pic-metric-label">Team Size</div>
+        <div class="pic-metric-val">5 or fewer</div>
+        <div class="pic-metric-sub">Paul + Justin + ~3 key staff</div>
+      </div>
+      <div class="pic-metric">
+        <div class="pic-metric-label">Deals / Month</div>
+        <div class="pic-metric-val">30–40</div>
+        <div class="pic-metric-sub">Funded deals per month</div>
+      </div>
+      <div class="pic-metric">
+        <div class="pic-metric-label">States Active</div>
+        <div class="pic-metric-val">All 50</div>
+        <div class="pic-metric-sub">Currently 20+</div>
+      </div>
+      <div class="pic-metric">
+        <div class="pic-metric-label">Fund AUM</div>
+        <div class="pic-metric-val">$5M+</div>
+        <div class="pic-metric-sub">LP capital deployed</div>
+      </div>
+      <div class="pic-metric">
+        <div class="pic-metric-label">Operations</div>
+        <div class="pic-metric-val">Systemized</div>
+        <div class="pic-metric-sub">AI handles 80%+ of execution</div>
+      </div>
+      <div class="pic-metric">
+        <div class="pic-metric-label">Paul's Time</div>
+        <div class="pic-metric-val">Visionary only</div>
+        <div class="pic-metric-sub">Capital, community, vision</div>
+      </div>
+      <div class="pic-metric">
+        <div class="pic-metric-label">Justin's Role</div>
+        <div class="pic-metric-val">Full-time</div>
+        <div class="pic-metric-sub">W2 exit by Oct 2026</div>
+      </div>
+    </div>
+
+    <div class="picture-story">
+      <div class="picture-story-label">What it looks, feels, and acts like</div>
+      <p>Paul and Justin meet weekly for 90 minutes. The business runs the rest of the week without them. Systems and AI handle deal intake, processing documentation, and bookkeeping. Manoella runs deal operations. Alana owns borrower communication from first contact through funded deal. Every transaction moves through a documented, repeatable process — the same whether Paul is on a plane, at a fireside chat, or on a mission with Akemi.</p>
+      <p style="margin-top:16px;">The fund is fully capitalized. LP investors reinvest because returns are real and predictable. RQF is the first call in the Gator/Sub2/Morby ecosystem when a creative finance deal needs capital. The brand is known — not because of ads, but because of community presence, consistently funded deals, and the relationships Paul and Justin have built over years.</p>
+      <p style="margin-top:16px;">Paul spends his time on capital relationships, keynote talks, community events, and strategic vision. Justin manages the operation and the team. Neither of them is doing work that a well-documented system and a well-trained person couldn't handle.</p>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- ══════════════════ 1-YEAR PLAN ══════════════════ -->
+  <section id="plan">
+    <div class="sec-label">
+      <span class="sec-tag">06</span>
+      <div class="sec-line"></div>
+    </div>
+    <h2>1-Year Plan</h2>
+    <p class="sec-desc">Where RQF needs to be by December 31, 2026 to stay on track for the 3-Year Picture.</p>
+
+    <div class="draft-banner">
+      <span class="draft-icon">⚡</span>
+      <div><strong>Working Draft — Needs Paul + Justin review.</strong> Revenue goal reflects the stated Q4 2026 target. All goals are working assumptions from session context.</div>
+    </div>
+
+    <div class="plan-layout">
+      <div class="plan-metrics">
+        <div class="plan-metric">
+          <div class="plan-metric-label">Revenue Goal</div>
+          <div class="plan-metric-val">$50K+/month</div>
+          <div class="plan-metric-sub">2 consecutive months by Q4 2026<br>~$550–600K total for the year</div>
+        </div>
+        <div class="plan-metric">
+          <div class="plan-metric-label">Deal Volume</div>
+          <div class="plan-metric-val">20+ deals/month</div>
+          <div class="plan-metric-sub">by Q4 2026</div>
+        </div>
+        <div class="plan-metric">
+          <div class="plan-metric-label">Justin Threshold</div>
+          <div class="plan-metric-val">October 2026</div>
+          <div class="plan-metric-sub">Month 6 of $20K+ net<br>(clock started April 2026)</div>
+        </div>
+        <div class="plan-metric">
+          <div class="plan-metric-label">EOS Rhythm</div>
+          <div class="plan-metric-val">8+ L10s held</div>
+          <div class="plan-metric-sub">Weekly cadence established<br>Scorecard live</div>
+        </div>
+        <div class="plan-metric">
+          <div class="plan-metric-label">Fund Capital</div>
+          <div class="plan-metric-val">$3M+ AUM</div>
+          <div class="plan-metric-sub">LP capital deployed by EOY</div>
+        </div>
+      </div>
+
+      <div class="plan-goals-card">
+        <div class="plan-goals-title">5 Most Important Things to Accomplish in 2026</div>
+
+        <div class="plan-goal">
+          <div class="plan-goal-n">1</div>
+          <div class="plan-goal-content">
+            <div class="plan-goal-title">Hit the $50K/month mark</div>
+            <div class="plan-goal-body">The revenue that proves the model, confirms the fund is working, and puts Justin's full-time transition in view. Two consecutive months at $50K+ by Q4.</div>
+          </div>
+        </div>
+
+        <div class="plan-goal">
+          <div class="plan-goal-n">2</div>
+          <div class="plan-goal-content">
+            <div class="plan-goal-title">Complete the Alana transition</div>
+            <div class="plan-goal-body">Paul fully out of Deal Communication by Q3. Alana trained, scripted, and running borrower relationships independently.</div>
+          </div>
+        </div>
+
+        <div class="plan-goal">
+          <div class="plan-goal-n">3</div>
+          <div class="plan-goal-content">
+            <div class="plan-goal-title">AI bookkeeping system operational</div>
+            <div class="plan-goal-body">Automated categorization and reconciliation live. Paul out of bookkeeping execution. System running autonomously by Q3.</div>
+          </div>
+        </div>
+
+        <div class="plan-goal">
+          <div class="plan-goal-n">4</div>
+          <div class="plan-goal-content">
+            <div class="plan-goal-title">EOS rhythm running — not just drafted</div>
+            <div class="plan-goal-body">Weekly L10s, Scorecard, and Rocks are in active weekly use. The system is actually running, not just documented on paper.</div>
+          </div>
+        </div>
+
+        <div class="plan-goal">
+          <div class="plan-goal-n">5</div>
+          <div class="plan-goal-content">
+            <div class="plan-goal-title">Fund capital at $3M+ AUM</div>
+            <div class="plan-goal-body">Enough LP capital deployed that RQF isn't scrambling on large deals or high-volume weeks. Pinecone Capital fully operational.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- ══════════════════ Q3 ROCKS ══════════════════ -->
+  <section id="rocks">
+    <div class="sec-label">
+      <span class="sec-tag">07</span>
+      <div class="sec-line"></div>
+    </div>
+    <h2>Q3 Rocks</h2>
+    <p class="sec-desc">July 1 – September 30, 2026. 3–7 priorities for the quarter. One owner per Rock. 90-day completable outcomes — not ongoing work.</p>
+
+    <div class="draft-banner">
+      <span class="draft-icon">⚡</span>
+      <div><strong>Working Draft — To be finalized with Justin before July 1.</strong> Each Rock needs one primary owner. The $1M fund raise target is a working assumption — confirm the number. Justin's 8–12 hr/week capacity constraint must be respected in assignment.</div>
+    </div>
+
+    <div class="rocks-header">
+      <span>Rock</span>
+      <span>Owner</span>
+      <span>Status</span>
+    </div>
+
+    <div class="rocks-list">
+      <div class="rock-item">
+        <div class="rock-name">Alana Deal Communication transition complete — Paul fully out of that role</div>
+        <div class="rock-owner"><span class="rock-owner-dot"></span>Paul (with Alana)</div>
+        <div class="rock-status rs-pending">Not Started</div>
+      </div>
+      <div class="rock-item">
+        <div class="rock-name">AI Bookkeeping v1 live — automated categorization + reconciliation operational</div>
+        <div class="rock-owner"><span class="rock-owner-dot"></span>Paul</div>
+        <div class="rock-status rs-pending">Not Started</div>
+      </div>
+      <div class="rock-item">
+        <div class="rock-name">Scorecard defined and live — 10+ weekly metrics, green/red targets, reviewed every L10</div>
+        <div class="rock-owner"><span class="rock-owner-dot"></span>Justin</div>
+        <div class="rock-status rs-pending">Not Started</div>
+      </div>
+      <div class="rock-item">
+        <div class="rock-name">13 L10 meetings held this quarter — all 13 weeks, strict agenda, rated each week</div>
+        <div class="rock-owner"><span class="rock-owner-dot"></span>Paul + Justin</div>
+        <div class="rock-status rs-pending">Not Started</div>
+      </div>
+      <div class="rock-item">
+        <div class="rock-name">Fund capital raise — $1M+ in new LP commitments closed in Q3</div>
+        <div class="rock-owner"><span class="rock-owner-dot"></span>Paul</div>
+        <div class="rock-status rs-pending">Not Started</div>
+      </div>
+      <div class="rock-item">
+        <div class="rock-name">V/TO finalized, locked, and shared with full team — no open sections</div>
+        <div class="rock-owner"><span class="rock-owner-dot"></span>Paul + Justin</div>
+        <div class="rock-status rs-pending">Not Started</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="div"></div>
+
+  <!-- ══════════════════ ACCOUNTABILITY CHART ══════════════════ -->
+  <section id="chart">
+    <div class="sec-label">
+      <span class="sec-tag">08</span>
+      <div class="sec-line"></div>
+    </div>
     <h2>Accountability Chart</h2>
     <p class="sec-desc">Seats first, people second. One owner per seat. Draft — to be finalized in joint session with Justin.</p>
+
+    <div class="draft-banner">
+      <span class="draft-icon">⚡</span>
+      <div><strong>Draft — Pending Justin session.</strong> Structure is built. Justin's Integrator seat is confirmed. Needs his reaction and final ownership of each sub-function before locking.</div>
+    </div>
 
     <div class="ac-leadership">
       <div class="ac-card">
@@ -813,110 +1538,126 @@
             <li>Rocks and Scorecard oversight</li>
             <li>Blocker removal — keeps operations moving</li>
           </ul>
-          <div class="ac-note">At current scale, Integrator = Head of Lending Operations (same seat). Separates as AI absorbs execution.</div>
+          <div class="ac-note">At current scale, Integrator = Head of Lending Operations (same seat). Separates as AI absorbs execution. Full-time October 2026 if trajectory holds.</div>
         </div>
       </div>
     </div>
 
-    <div class="ac-functions">
+    <div class="ac-fn-groups">
 
-      <div class="ac-fn">
-        <div class="ac-fn-head">
-          <div class="ac-fn-title">Lending Operations</div>
-          <div class="ac-fn-owner">Owner: Justin &nbsp;|&nbsp; Staff: Manoella, Alana</div>
-        </div>
-        <div class="ac-fn-body">
-          <div class="ac-sub">
-            <div class="ac-sub-name">Deal Communication</div>
-            <div class="ac-sub-who">Justin + Paul + Alana</div>
-            <div class="ac-sub-flag">⟳ Alana taking over (60–90 days)</div>
+      <!-- VISIONARY FUNCTIONS -->
+      <div class="ac-fn-group">
+        <div class="ac-fn-group-hdr">↳ <em>Visionary</em> — Paul Brown</div>
+        <div class="ac-fn-cols">
+
+          <div class="ac-fn">
+            <div class="ac-fn-head">
+              <div class="ac-fn-title">Capital Management</div>
+              <div class="ac-fn-owner">Owner: Paul (permanent by design)</div>
+            </div>
+            <div class="ac-fn-body">
+              <div class="ac-sub">
+                <div class="ac-sub-name">Capital Relationships</div>
+                <div class="ac-sub-who">Paul — private individuals, quick-deployment sources</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">Fund Coordination</div>
+                <div class="ac-sub-who">Paul — Pinecone / ResGAP Plus LP drawdowns</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">Capital Planning</div>
+                <div class="ac-sub-who">Paul + Justin (weekly) — deal flow vs. capital availability</div>
+              </div>
+            </div>
           </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">Deal Processing</div>
-            <div class="ac-sub-who">Manoella — in-system entry, documentation, validation</div>
+
+          <div class="ac-fn">
+            <div class="ac-fn-head">
+              <div class="ac-fn-title">Acquisitions</div>
+              <div class="ac-fn-owner">Owner: Paul (transitioning) &nbsp;|&nbsp; Angel + bird dogs</div>
+            </div>
+            <div class="ac-fn-body">
+              <div class="ac-sub">
+                <div class="ac-sub-name">Cold Outreach</div>
+                <div class="ac-sub-who">Paul + Justin + bird dogs</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">Social Media</div>
+                <div class="ac-sub-who">Paul creates · Angel distributes · bird dogs replicate</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">In-Person &amp; Events</div>
+                <div class="ac-sub-who">Paul + Justin · dual-purpose: deals + capital leads</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">Bird Dog / Orbit Community</div>
+                <div class="ac-sub-who">Paul — force multiplier across all channels</div>
+              </div>
+            </div>
           </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">Wire Authorization</div>
-            <div class="ac-sub-who">Justin + Paul ONLY</div>
-            <div class="ac-sub-lock">🔒 Permanent — never delegated</div>
-          </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">Collections &amp; Recovery</div>
-            <div class="ac-sub-who">Manoella + Alana</div>
-          </div>
+
         </div>
       </div>
 
-      <div class="ac-fn">
-        <div class="ac-fn-head">
-          <div class="ac-fn-title">Acquisitions</div>
-          <div class="ac-fn-owner">Owner: Paul (transitioning) &nbsp;|&nbsp; Angel + bird dogs</div>
-        </div>
-        <div class="ac-fn-body">
-          <div class="ac-sub">
-            <div class="ac-sub-name">Cold Outreach</div>
-            <div class="ac-sub-who">Paul + Justin + bird dogs</div>
-          </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">Social Media</div>
-            <div class="ac-sub-who">Paul creates · Angel distributes · bird dogs replicate</div>
-          </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">In-Person &amp; Events</div>
-            <div class="ac-sub-who">Paul + Justin · dual-purpose: deals + capital leads</div>
-          </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">Bird Dog / Orbit Community</div>
-            <div class="ac-sub-who">Paul — force multiplier across all channels</div>
-          </div>
-        </div>
-      </div>
+      <!-- INTEGRATOR FUNCTIONS -->
+      <div class="ac-fn-group">
+        <div class="ac-fn-group-hdr">↳ <em>Integrator</em> — Justin Pilakka</div>
+        <div class="ac-fn-cols">
 
-      <div class="ac-fn">
-        <div class="ac-fn-head">
-          <div class="ac-fn-title">Capital Management</div>
-          <div class="ac-fn-owner">Owner: Paul (permanent by design)</div>
-        </div>
-        <div class="ac-fn-body">
-          <div class="ac-sub">
-            <div class="ac-sub-name">Capital Relationships</div>
-            <div class="ac-sub-who">Paul — private individuals, quick-deployment sources</div>
+          <div class="ac-fn">
+            <div class="ac-fn-head">
+              <div class="ac-fn-title">Lending Operations</div>
+              <div class="ac-fn-owner">Owner: Justin &nbsp;|&nbsp; Staff: Manoella, Alana</div>
+            </div>
+            <div class="ac-fn-body">
+              <div class="ac-sub">
+                <div class="ac-sub-name">Deal Communication</div>
+                <div class="ac-sub-who">Justin + Paul + Alana</div>
+                <div class="ac-sub-flag">⟳ Alana taking over (60–90 days)</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">Deal Processing</div>
+                <div class="ac-sub-who">Manoella — in-system entry, documentation, validation</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">Wire Authorization</div>
+                <div class="ac-sub-who">Justin + Paul ONLY</div>
+                <div class="ac-sub-lock">🔒 Permanent — never delegated</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">Collections &amp; Recovery</div>
+                <div class="ac-sub-who">Manoella + Alana</div>
+              </div>
+            </div>
           </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">Fund Coordination</div>
-            <div class="ac-sub-who">Paul — Pinecone / ResGAP Plus LP drawdowns</div>
-          </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">Capital Planning</div>
-            <div class="ac-sub-who">Paul + Justin (weekly) — deal flow vs. capital availability</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="ac-fn">
-        <div class="ac-fn-head">
-          <div class="ac-fn-title">Back Office &amp; Systems</div>
-          <div class="ac-fn-owner">Owner: Paul (transitioning) &nbsp;|&nbsp; Roz + Christina</div>
-        </div>
-        <div class="ac-fn-body">
-          <div class="ac-sub">
-            <div class="ac-sub-name">Bookkeeping &amp; Accounting</div>
-            <div class="ac-sub-who">AI system (building) + Christina</div>
-            <div class="ac-sub-flag">⟳ Exit: AI system complete Q3</div>
+          <div class="ac-fn">
+            <div class="ac-fn-head">
+              <div class="ac-fn-title">Back Office &amp; Systems</div>
+              <div class="ac-fn-owner">Owner: Paul (transitioning) &nbsp;|&nbsp; Roz + Christina</div>
+            </div>
+            <div class="ac-fn-body">
+              <div class="ac-sub">
+                <div class="ac-sub-name">Bookkeeping &amp; Accounting</div>
+                <div class="ac-sub-who">AI system (building) + Christina</div>
+                <div class="ac-sub-flag">⟳ Exit: AI system complete Q3</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">Tax &amp; CPA / Legal</div>
+                <div class="ac-sub-who">Outsourced</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">IT &amp; Systems</div>
+                <div class="ac-sub-who">Roz (contractor)</div>
+              </div>
+              <div class="ac-sub">
+                <div class="ac-sub-name">AI &amp; Automation Dev</div>
+                <div class="ac-sub-who">Paul — future hire needed</div>
+                <div class="ac-sub-flag">⟳ Distinct from IT maintenance</div>
+              </div>
+            </div>
           </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">Tax &amp; CPA / Legal</div>
-            <div class="ac-sub-who">Outsourced</div>
-          </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">IT &amp; Systems</div>
-            <div class="ac-sub-who">Roz (contractor)</div>
-          </div>
-          <div class="ac-sub">
-            <div class="ac-sub-name">AI &amp; Automation Dev</div>
-            <div class="ac-sub-who">Paul — future hire needed</div>
-            <div class="ac-sub-flag">⟳ Distinct from IT maintenance</div>
-          </div>
+
         </div>
       </div>
 
@@ -925,14 +1666,14 @@
 
   <div class="div"></div>
 
-  <!-- ══════════════════ KEY ISSUES ══════════════════ -->
+  <!-- ══════════════════ ISSUES LIST ══════════════════ -->
   <section id="issues">
     <div class="sec-label">
-      <span class="sec-tag">04</span>
+      <span class="sec-tag">09</span>
       <div class="sec-line"></div>
     </div>
-    <h2>Key Issues</h2>
-    <p class="sec-desc">Captured from today's session. These go on the Issues List — solved in L10 IDS, not before.</p>
+    <h2>Issues List</h2>
+    <p class="sec-desc">Every problem, obstacle, idea, and concern — captured, not solved. These get addressed in L10 IDS (Identify → Discuss → Solve). Don't solve them here. Just make sure nothing is missing.</p>
 
     <div class="issues-list">
       <div class="issue p-high">
@@ -940,39 +1681,79 @@
         <div class="issue-content">
           <div class="issue-title">Paul is in too many operational seats</div>
           <div class="issue-body">Lending Ops, Back Office, AI Development, and Acquisitions all have Paul filling gaps. The business can't scale if the Visionary is running operations.</div>
-          <div class="issue-path">Exits: Alana → Deal Communication (60–90 days) · AI system → Bookkeeping (Q3) · Christina → Back Office admin</div>
+          <div class="issue-path">Exits: Alana → Deal Communication (60–90 days) · AI system → Bookkeeping (Q3) · Christina → Back Office admin · Future hire → AI/Automation Dev</div>
         </div>
       </div>
       <div class="issue p-high">
         <div class="issue-n">2</div>
         <div class="issue-content">
           <div class="issue-title">AI &amp; Automation Development has no owner or exit path</div>
-          <div class="issue-body">Paul building AI/automation infrastructure is consuming significant Visionary hours with no handoff plan.</div>
+          <div class="issue-body">Paul is building critical infrastructure but this function has no formal accountability, no written plan, and no handoff date.</div>
           <div class="issue-path">Proposed Q3 Rock: "Build and document AI/automation stack, transition ownership by September 30."</div>
         </div>
       </div>
-      <div class="issue p-med">
+      <div class="issue p-high">
         <div class="issue-n">3</div>
         <div class="issue-content">
-          <div class="issue-title">Justin's W2 transition clock is running</div>
-          <div class="issue-body">Justin needs 6 consecutive months of &gt;$20K net profit before going full-time. Clock started April 2026. Earliest full-time = October 2026.</div>
-          <div class="issue-path">Revenue trajectory is strong — this may be on track. Rocks must respect 8–12 hr/week bandwidth until then.</div>
+          <div class="issue-title">No Scorecard — flying blind on leading indicators</div>
+          <div class="issue-body">No weekly metrics tracked. No visibility into deal pipeline health, borrower activity, or capital velocity. Can't run L10s effectively without it.</div>
+          <div class="issue-path">Q3 Rock: Scorecard defined, 10+ metrics live, reviewed weekly in L10.</div>
         </div>
       </div>
       <div class="issue p-med">
         <div class="issue-n">4</div>
         <div class="issue-content">
-          <div class="issue-title">Alana onboarding — Deal Communication transition</div>
-          <div class="issue-body">60–90 day transition requires deal scripts, process documentation, shadowing protocol, and handoff metrics.</div>
-          <div class="issue-path">Owner: Justin. Needs explicit onboarding plan.</div>
+          <div class="issue-title">Justin's W2 transition clock is running</div>
+          <div class="issue-body">Justin needs 6 consecutive months of &gt;$20K net profit before going full-time. Clock started April 2026. Earliest full-time = October 2026 if trajectory holds.</div>
+          <div class="issue-path">Revenue trajectory is strong. Rocks must respect 8–12 hr/week capacity until October. Need coverage protocol for when Justin is unavailable.</div>
+        </div>
+      </div>
+      <div class="issue p-med">
+        <div class="issue-n">5</div>
+        <div class="issue-content">
+          <div class="issue-title">Alana onboarding — Deal Communication transition plan missing</div>
+          <div class="issue-body">60–90 day transition needs written deal scripts, process documentation, shadowing protocol, and explicit completion criteria.</div>
+          <div class="issue-path">Owner: Justin. Needs an onboarding plan before transition starts.</div>
+        </div>
+      </div>
+      <div class="issue p-med">
+        <div class="issue-n">6</div>
+        <div class="issue-content">
+          <div class="issue-title">No documented borrower intake or qualification process</div>
+          <div class="issue-body">Each deal feels different because there's no written standard: what qualifies, what the first conversation looks like, what the timeline expectation is.</div>
+          <div class="issue-path">Needs to be documented before Alana takes over Deal Communication. Otherwise she's winging it.</div>
+        </div>
+      </div>
+      <div class="issue p-med">
+        <div class="issue-n">7</div>
+        <div class="issue-content">
+          <div class="issue-title">Two separate marketing stories needed — neither is written</div>
+          <div class="issue-body">Borrowers and fund investors need distinct pitches. The Three Uniques and Guarantee are drafted, but no deployed, tested messaging exists for either audience.</div>
+          <div class="issue-path">Marketing Strategy is drafted (Section 04). Now needs to be executed and tested.</div>
         </div>
       </div>
       <div class="issue p-low">
-        <div class="issue-n">5</div>
+        <div class="issue-n">8</div>
         <div class="issue-content">
           <div class="issue-title">Fund Accountability Chart — separate document needed</div>
           <div class="issue-body">Pinecone Capital / ResGAP Plus LP is SEC-regulated and needs its own 3-seat chart distinct from the RQF operating chart.</div>
-          <div class="issue-path">3 seats: Capital Raising · Fund Management · Investment Committee (Justin must be second member).</div>
+          <div class="issue-path">3 seats: Capital Raising · Fund Management · Investment Committee (Justin must be second member for compliance).</div>
+        </div>
+      </div>
+      <div class="issue p-low">
+        <div class="issue-n">9</div>
+        <div class="issue-content">
+          <div class="issue-title">Bird dog / Orbit community — no structured program</div>
+          <div class="issue-body">No training materials, no activation plan, no metrics. Paul is the glue holding this together informally. Force multiplier potential is untapped.</div>
+          <div class="issue-path">Could 2x deal flow. Needs a system and someone to run it.</div>
+        </div>
+      </div>
+      <div class="issue p-low">
+        <div class="issue-n">10</div>
+        <div class="issue-content">
+          <div class="issue-title">"Extra Mile" Core Value label is still a working label</div>
+          <div class="issue-body">Needs final word before it goes on offer letters, onboarding materials, or the office wall. "Go-Giver" resonates but is overused. Good Samaritan and Sam Gamgee were close references.</div>
+          <div class="issue-path">Low urgency but needs to close before the V/TO is fully locked.</div>
         </div>
       </div>
     </div>
@@ -980,51 +1761,29 @@
 
   <div class="div"></div>
 
-  <!-- ══════════════════ NEXT STEPS ══════════════════ -->
-  <section id="next">
+  <!-- ══════════════════ SCORECARD ══════════════════ -->
+  <section id="scorecard">
     <div class="sec-label">
-      <span class="sec-tag">05</span>
+      <span class="sec-tag">10</span>
       <div class="sec-line"></div>
     </div>
-    <h2>Next Steps</h2>
-    <p class="sec-desc">The EOS implementation sequence. Nothing happens out of order — each step unlocks the next.</p>
+    <h2>Scorecard</h2>
+    <p class="sec-desc">5–15 weekly leading indicators with Red/Green targets. Reviewed in the first 5 minutes of every L10. Not built yet — this is Phase 2 work.</p>
 
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-n">1</div>
-        <div class="step-title">Complete V/TO Sections 3 &amp; 4</div>
-        <div class="step-body">10-Year Target and Marketing Strategy (Target Market, Three Uniques, Proven Process, Guarantee). Paul drafts solo first.</div>
-        <div class="step-when">This week · Paul solo</div>
-      </div>
-      <div class="step">
-        <div class="step-n">2</div>
-        <div class="step-title">Justin Session — V/TO Review + Accountability Chart</div>
-        <div class="step-body">90-minute working session. Bring the V/TO draft. Walk Core Values + Core Focus together. Build the Accountability Chart jointly.</div>
-        <div class="step-when">This week or next · Paul + Justin</div>
-      </div>
-      <div class="step">
-        <div class="step-n">3</div>
-        <div class="step-title">Activate Lisa (Owner's Club EOS)</div>
-        <div class="step-body">Book after V/TO + Accountability Chart are drafted. Use Lisa for formal EOS kickoff, Scorecard design, and Issues List seeding.</div>
-        <div class="step-when">After Justin session</div>
-      </div>
-      <div class="step">
-        <div class="step-n">4</div>
-        <div class="step-title">Build the Scorecard</div>
-        <div class="step-body">5–15 weekly leading indicators with Red/Green targets. Likely: deal inquiries/week · deals funded · weekly revenue · Gator referral conversations.</div>
-        <div class="step-when">Phase 2 · Days 30–60</div>
-      </div>
-      <div class="step">
-        <div class="step-n">5</div>
-        <div class="step-title">Lock Q3 2026 Rocks</div>
-        <div class="step-body">3–7 priorities for July 1–September 30. Key candidates: AI/automation handoff, Alana onboarding complete, Scorecard running 30 days, Fund Accountability Chart.</div>
-        <div class="step-when">Phase 2 · Days 30–60</div>
-      </div>
-      <div class="step">
-        <div class="step-n">6</div>
-        <div class="step-title">First L10 Meeting</div>
-        <div class="step-body">Cannot start until V/TO is 80%+ complete AND Accountability Chart is finalized. 90 minutes, strict agenda, every week without exception.</div>
-        <div class="step-when">Phase 3 · Days 60–90</div>
+    <div class="scorecard-placeholder">
+      <div class="sc-icon">📊</div>
+      <div class="sc-title">Scorecard — Not Yet Built</div>
+      <div class="sc-body">The Scorecard is built in Phase 2 (Days 30–60), after the V/TO and Accountability Chart are finalized. It becomes the dashboard for the business — reviewed every single L10 meeting. Every metric needs a weekly target, an owner, and a Red/Green definition.</div>
+      <div class="sc-metrics">
+        <span class="sc-tag">Deal inquiries / week</span>
+        <span class="sc-tag">Deals funded / week</span>
+        <span class="sc-tag">Weekly revenue</span>
+        <span class="sc-tag">Capital deployed</span>
+        <span class="sc-tag">Gator referral conversations</span>
+        <span class="sc-tag">Active borrower relationships</span>
+        <span class="sc-tag">Fund capital available</span>
+        <span class="sc-tag">L10 attendance</span>
+        <span class="sc-tag">Rocks on track</span>
       </div>
     </div>
   </section>
@@ -1033,8 +1792,8 @@
 
 <footer>
   <div class="ft-title">Real Quick Funds — EOS Foundation</div>
-  <p>Session date: May 25, 2026 &nbsp;·&nbsp; Visionary: Paul Brown &nbsp;·&nbsp; Integrator (designate): Justin Pilakka</p>
-  <p>V/TO Status: Core Values ✓ &nbsp;·&nbsp; Core Focus ✓ &nbsp;·&nbsp; Accountability Chart (draft) &nbsp;·&nbsp; Sections 3–8 pending</p>
+  <p>Session date: May 25, 2026 &nbsp;·&nbsp; Visionary: Paul Brown &nbsp;·&nbsp; Integrator: Justin Pilakka</p>
+  <p>V/TO: Core Values ✓ &nbsp;·&nbsp; Core Focus ✓ &nbsp;·&nbsp; Sections 3–8 drafted &nbsp;·&nbsp; Accountability Chart (draft) &nbsp;·&nbsp; Scorecard (not started)</p>
   <p style="margin-top:10px;opacity:.45;font-style:italic;font-size:11.5px;">Working draft — nothing is final until both Paul and Justin have reviewed and agreed.</p>
 </footer>
 
