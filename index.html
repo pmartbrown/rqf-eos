@@ -6,37 +6,40 @@
   <title>Real Quick Funds — EOS Foundation | May 25, 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:           #f4f6fb;
+      --bg:           #f1f4f9;
       --surface:      #ffffff;
-      --surface-2:    #f8faff;
-      --border:       #e2e8f4;
-      --border-mid:   #cdd5e8;
-      --text:         #0d1526;
-      --text-2:       #334155;
-      --muted:        #64748b;
-      --faint:        #94a3b8;
+      --surface-2:    #f7f9fd;
+      --border:       #e3e9f4;
+      --border-mid:   #c8d3e8;
+      --text:         #0c1422;
+      --text-2:       #2d3f55;
+      --muted:        #607590;
+      --faint:        #96a8bf;
       --accent:       #b8900a;
       --accent-light: #fef3c7;
-      --accent-dark:  #92700a;
-      --green:        #059669;
-      --green-bg:     #ecfdf5;
-      --green-border: #6ee7b7;
-      --amber:        #d97706;
-      --amber-bg:     #fffbeb;
-      --amber-border: #fcd34d;
-      --red:          #dc2626;
-      --red-bg:       #fef2f2;
-      --red-border:   #fca5a5;
-      --blue:         #2563eb;
-      --blue-bg:      #eff6ff;
-      --blue-border:  #93c5fd;
-      --shadow-sm:    0 1px 2px rgba(15,23,42,0.05);
-      --shadow:       0 1px 4px rgba(15,23,42,0.07), 0 1px 2px rgba(15,23,42,0.04);
-      --shadow-md:    0 4px 12px rgba(15,23,42,0.08), 0 1px 3px rgba(15,23,42,0.04);
+      --accent-mid:   rgba(184,144,10,0.15);
+      --accent-dark:  #8a6b08;
+      --green:        #0a8f63;
+      --green-bg:     #eafaf4;
+      --green-border: #6dd4b0;
+      --amber:        #c97008;
+      --amber-bg:     #fff8eb;
+      --amber-border: #f0c050;
+      --red:          #c82020;
+      --red-bg:       #fef1f1;
+      --red-border:   #f0a0a0;
+      --blue:         #1d57d8;
+      --blue-bg:      #eef3ff;
+      --blue-border:  #8bb0f4;
+      --shadow-xs:    0 1px 2px rgba(12,20,34,0.04);
+      --shadow-sm:    0 1px 3px rgba(12,20,34,0.07), 0 1px 2px rgba(12,20,34,0.04);
+      --shadow:       0 2px 8px rgba(12,20,34,0.07), 0 1px 3px rgba(12,20,34,0.04);
+      --shadow-md:    0 6px 18px rgba(12,20,34,0.09), 0 2px 6px rgba(12,20,34,0.04);
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -47,41 +50,46 @@
       font-size: 15px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── ACCENT BAR ──────────────────────────── */
+    .header-bar {
+      height: 5px;
+      background: linear-gradient(90deg, #7a5c00 0%, #c9a012 35%, #e8c040 60%, #c9a012 80%, #7a5c00 100%);
     }
 
     /* ── HEADER ─────────────────────────────── */
-    .header-bar {
-      height: 4px;
-      background: linear-gradient(90deg, #b8900a 0%, #e6b422 50%, #b8900a 100%);
-    }
     header {
-      background: var(--surface);
+      background: linear-gradient(160deg, #f0f5ff 0%, #fafcff 45%, #ffffff 100%);
       border-bottom: 1px solid var(--border);
-      padding: 52px 48px 44px;
+      padding: 56px 48px 48px;
       text-align: center;
+      position: relative;
     }
     .eyebrow {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
-      letter-spacing: 3px;
+      letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     header h1 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 10px;
       letter-spacing: -0.5px;
-      line-height: 1.15;
+      line-height: 1.1;
     }
     header h1 em { color: var(--accent); font-style: normal; }
     .subtitle {
       font-size: 13px;
+      font-weight: 400;
       color: var(--muted);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       margin-top: 6px;
     }
     .badges {
@@ -94,13 +102,13 @@
     .badge {
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.5px;
-      padding: 5px 13px;
+      padding: 5px 13px 5px 10px;
       border-radius: 100px;
       border: 1px solid;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
+      letter-spacing: 0.1px;
     }
     .b-green  { color: var(--green);  border-color: var(--green-border);  background: var(--green-bg); }
     .b-amber  { color: var(--amber);  border-color: var(--amber-border);  background: var(--amber-bg); }
@@ -119,89 +127,104 @@
       position: sticky;
       top: 0;
       z-index: 200;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 1px 0 rgba(12,20,34,0.04);
     }
-    nav ul { display: flex; list-style: none; justify-content: center; padding: 0 32px; }
+    nav ul { display: flex; list-style: none; justify-content: center; padding: 0 32px; gap: 4px; }
     nav a {
       display: block;
-      padding: 14px 20px;
+      padding: 14px 18px;
       font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.2px;
       text-decoration: none;
       color: var(--muted);
-      border-bottom: 2px solid transparent;
-      transition: color .18s, border-color .18s;
+      position: relative;
+      transition: color .18s;
       white-space: nowrap;
     }
-    nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 18px; right: 18px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px 2px 0 0;
+      transform: scaleX(0);
+      transition: transform .18s;
+    }
+    nav a:hover { color: var(--accent); }
+    nav a:hover::after { transform: scaleX(1); }
 
     /* ── LAYOUT ──────────────────────────────── */
     main { max-width: 1060px; margin: 0 auto; padding: 72px 40px 96px; }
     section { margin-bottom: 84px; }
 
-    .sec-head {
+    .sec-label {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
+      gap: 10px;
+      margin-bottom: 6px;
     }
-    .sec-num {
-      font-size: 11px;
+    .sec-tag {
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
+      text-transform: uppercase;
       color: var(--accent);
       background: var(--accent-light);
-      border: 1px solid rgba(184,144,10,0.25);
-      border-radius: 6px;
-      padding: 3px 9px;
+      border: 1px solid rgba(184,144,10,0.22);
+      border-radius: 5px;
+      padding: 2px 8px;
+      flex-shrink: 0;
+    }
+    .sec-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
     }
     h2 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.75rem;
+      font-size: 1.85rem;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
     }
     .sec-desc {
       font-size: 13.5px;
       color: var(--muted);
       font-style: italic;
-      margin-bottom: 28px;
-      padding-left: 2px;
+      margin-bottom: 32px;
       line-height: 1.6;
     }
-    .rule { height: 1px; background: var(--border); margin-bottom: 28px; }
 
-    /* ── CORE VALUES — horizontal strips ─────── */
-    .value-list { display: flex; flex-direction: column; }
+    /* ── CORE VALUES ─────────────────────────── */
+    .value-list { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
 
     .value-row {
       display: grid;
-      grid-template-columns: 52px 200px 1fr;
+      grid-template-columns: 48px 196px 1fr;
       gap: 0;
       border-bottom: 1px solid var(--border);
-      padding: 28px 0;
+      padding: 30px 0;
       transition: background .15s;
     }
-    .value-row:first-child { border-top: 1px solid var(--border); }
     .value-row:hover { background: rgba(184,144,10,0.025); }
 
     .val-num {
-      font-size: 26px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
       font-weight: 700;
       color: var(--accent);
-      opacity: .18;
-      padding-top: 3px;
-      flex-shrink: 0;
-      font-family: 'Playfair Display', serif;
+      opacity: .16;
+      padding-top: 2px;
     }
     .val-left {
-      padding-right: 32px;
+      padding-right: 28px;
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
@@ -210,49 +233,52 @@
     }
     .val-name {
       font-size: 1.05rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text);
       letter-spacing: -0.2px;
     }
     .firing-pill {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       font-size: 9px;
       font-weight: 700;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
       color: var(--red);
       background: var(--red-bg);
       border: 1px solid var(--red-border);
       border-radius: 4px;
-      padding: 2px 7px;
+      padding: 3px 8px;
       width: fit-content;
     }
     .val-right {
       padding-left: 32px;
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 8px;
     }
     .val-body {
       font-size: 14px;
       color: var(--text-2);
-      line-height: 1.7;
+      line-height: 1.72;
     }
     .val-note {
       font-size: 12.5px;
       color: var(--muted);
       font-style: italic;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* ── CORE FOCUS ──────────────────────────── */
-    .focus-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .focus-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
 
     .focus-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 30px;
+      border-top: 3px solid var(--accent);
+      border-radius: 0 0 12px 12px;
+      padding: 28px 30px;
       box-shadow: var(--shadow);
     }
     .focus-label {
@@ -264,11 +290,9 @@
       margin-bottom: 14px;
     }
     .focus-quote {
-      font-size: 1rem;
+      font-size: 1.02rem;
       color: var(--text);
-      line-height: 1.7;
-      border-left: 3px solid var(--accent);
-      padding-left: 16px;
+      line-height: 1.72;
       font-style: italic;
     }
 
@@ -284,14 +308,14 @@
       font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--faint);
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
     .bridge-row {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 20px;
+      grid-template-columns: 1fr 160px 1fr;
+      gap: 0;
       align-items: center;
     }
     .bridge-side {
@@ -309,35 +333,39 @@
       margin-bottom: 8px;
     }
     .bridge-side-val {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 6px;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
     }
     .bridge-side-sub { font-size: 12.5px; color: var(--text-2); line-height: 1.6; }
-    .bridge-mid { text-align: center; padding: 0 12px; }
+    .bridge-mid { text-align: center; padding: 0 16px; }
     .bridge-mid-name {
-      font-size: 1.05rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 4px;
     }
-    .bridge-arrows { color: var(--accent); opacity: .5; font-size: 24px; letter-spacing: 6px; margin-bottom: 6px; }
-    .bridge-mid-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .bridge-arrows { font-size: 22px; color: var(--accent); opacity: .45; letter-spacing: 6px; margin-bottom: 6px; }
+    .bridge-mid-sub { font-size: 11px; color: var(--muted); line-height: 1.5; }
     .bridge-footnote {
       text-align: center;
       font-size: 12px;
       color: var(--muted);
-      margin-top: 22px;
+      margin-top: 24px;
       font-style: italic;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
     }
 
     /* ── ACCOUNTABILITY CHART ────────────────── */
     .ac-leadership {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
+      gap: 14px;
+      margin-bottom: 14px;
     }
     .ac-card {
       background: var(--surface);
@@ -349,15 +377,15 @@
     .ac-card-head {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       padding: 14px 20px;
-      background: linear-gradient(135deg, rgba(184,144,10,0.07) 0%, rgba(184,144,10,0.03) 100%);
+      background: linear-gradient(135deg, rgba(184,144,10,0.08) 0%, rgba(184,144,10,0.03) 100%);
       border-bottom: 1px solid var(--border);
     }
     .ac-card-title {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
       color: var(--accent-dark);
     }
@@ -383,12 +411,12 @@
       font-weight: 700;
     }
     .ac-note {
-      font-size: 11.5px;
+      font-size: 12px;
       color: var(--muted);
       font-style: italic;
-      margin-top: 12px;
-      padding: 10px 12px;
-      background: var(--bg);
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: var(--surface-2);
       border-radius: 6px;
       border-left: 3px solid var(--border-mid);
       line-height: 1.55;
@@ -397,14 +425,14 @@
     .ac-functions {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      gap: 12px;
     }
     .ac-fn {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-xs);
     }
     .ac-fn-head {
       padding: 12px 16px;
@@ -414,7 +442,7 @@
     .ac-fn-title {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
       color: var(--text);
     }
@@ -423,9 +451,10 @@
       font-weight: 400;
       color: var(--muted);
       margin-top: 3px;
+      line-height: 1.4;
     }
     .ac-fn-body { padding: 14px 16px; }
-    .ac-sub { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .ac-sub { margin-bottom: 13px; padding-bottom: 13px; border-bottom: 1px solid var(--border); }
     .ac-sub:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .ac-sub-name {
       font-size: 12.5px;
@@ -450,31 +479,35 @@
     /* ── ISSUES ──────────────────────────────── */
     .issues-list { display: flex; flex-direction: column; gap: 10px; }
     .issue {
-      display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 16px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-left: 3px solid;
       border-radius: 0 10px 10px 0;
-      padding: 20px 24px;
-      box-shadow: var(--shadow-sm);
+      padding: 20px 24px 20px 20px;
+      box-shadow: var(--shadow-xs);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
     }
     .issue.p-high { border-left-color: var(--red); }
     .issue.p-med  { border-left-color: var(--amber); }
     .issue.p-low  { border-left-color: var(--blue); }
     .issue-n {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--faint);
+      min-width: 20px;
       padding-top: 2px;
+      flex-shrink: 0;
     }
+    .issue-content { flex: 1; }
     .issue-title {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 5px;
       letter-spacing: -0.2px;
+      line-height: 1.4;
     }
     .issue-body { font-size: 13.5px; color: var(--text-2); line-height: 1.65; }
     .issue-path {
@@ -495,37 +528,47 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 26px;
-      box-shadow: var(--shadow);
-      transition: box-shadow .18s, transform .18s;
+      padding: 26px 26px 22px;
+      box-shadow: var(--shadow-xs);
+      transition: box-shadow .2s, transform .2s, border-color .2s;
+      position: relative;
+      overflow: hidden;
     }
-    .step:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
+    .step::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity .2s;
     }
+    .step:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--border-mid); }
+    .step:hover::before { opacity: 1; }
     .step-n {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 700;
       color: var(--accent);
-      opacity: .15;
+      opacity: .13;
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .step-title {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 8px;
       letter-spacing: -0.2px;
+      line-height: 1.4;
     }
     .step-body { font-size: 13px; color: var(--text-2); line-height: 1.65; }
     .step-when {
       display: inline-block;
-      margin-top: 14px;
+      margin-top: 16px;
       font-size: 10.5px;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
       color: var(--muted);
       background: var(--bg);
@@ -542,9 +585,9 @@
       text-align: center;
     }
     footer .ft-title {
-      font-size: .95rem;
+      font-size: .9rem;
       font-weight: 600;
-      color: var(--accent);
+      color: var(--accent-dark);
       margin-bottom: 6px;
     }
     footer p {
@@ -554,7 +597,11 @@
     }
 
     /* ── DIVIDER ─────────────────────────────── */
-    .div { height: 1px; background: var(--border); margin: 68px 0; }
+    .div {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--border) 15%, var(--border) 85%, transparent 100%);
+      margin: 72px 0;
+    }
 
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 900px) {
@@ -569,9 +616,9 @@
     }
     @media (max-width: 640px) {
       header { padding: 40px 24px 32px; }
-      header h1 { font-size: 2rem; }
+      header h1 { font-size: 2.2rem; }
       main { padding: 48px 20px 72px; }
-      nav ul { justify-content: flex-start; overflow-x: auto; padding: 0 12px; }
+      nav ul { justify-content: flex-start; overflow-x: auto; padding: 0 12px; gap: 0; }
       .ac-functions { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
       .value-row { grid-template-columns: 1fr; }
@@ -612,11 +659,11 @@
 
   <!-- ══════════════════ CORE VALUES ══════════════════ -->
   <section id="values">
-    <div class="sec-head">
-      <span class="sec-num">01</span>
-      <h2>Core Values</h2>
+    <div class="sec-label">
+      <span class="sec-tag">01</span>
+      <div class="sec-line"></div>
     </div>
-    <div class="rule"></div>
+    <h2>Core Values</h2>
     <p class="sec-desc">Authentic, not aspirational — these describe who RQF already is at its best. We hire, fire, reward, and recognize based on these five values.</p>
 
     <div class="value-list">
@@ -624,23 +671,22 @@
       <div class="value-row">
         <div class="val-num">01</div>
         <div class="val-left">
-          <div class="val-name">Integrity</div>
-          <div class="firing-pill">Immediate Firing Offense</div>
+          <div class="val-name">Stewardship</div>
         </div>
         <div class="val-right">
-          <div class="val-body">Ethical conduct in every transaction — including protecting parties we're not obligated to protect. Zero tolerance for internal dishonesty or cover-ups.</div>
-          <div class="val-note">The only hard-line immediate termination standard. All other values: coach first. This one: no second chance.</div>
+          <div class="val-body">Responsible management of capital, relationships, and business operations. RQF operates as a fiduciary in practice — for fund investors, for clients' deals, and for internal records.</div>
+          <div class="val-note">Transparency earns trust. Trust earns more capital access.</div>
         </div>
       </div>
 
       <div class="value-row">
         <div class="val-num">02</div>
         <div class="val-left">
-          <div class="val-name">Stewardship</div>
+          <div class="val-name">Urgency</div>
         </div>
         <div class="val-right">
-          <div class="val-body">Responsible management of capital, relationships, and business operations. RQF operates as a fiduciary in practice — for fund investors, for clients' deals, and for internal records.</div>
-          <div class="val-note">Transparency earns trust. Trust earns more capital access.</div>
+          <div class="val-body">Every deal is treated like it can't wait. Speed and availability are both expressions of this value. If someone can't develop urgency, it is ultimately a fireable offense.</div>
+          <div class="val-note">Distinction: Speed = table stakes (Three Uniques). Urgency = the internal disposition that produces speed.</div>
         </div>
       </div>
 
@@ -658,11 +704,12 @@
       <div class="value-row">
         <div class="val-num">04</div>
         <div class="val-left">
-          <div class="val-name">Urgency</div>
+          <div class="val-name">Integrity</div>
+          <div class="firing-pill">Immediate Firing Offense</div>
         </div>
         <div class="val-right">
-          <div class="val-body">Every deal is treated like it can't wait. Speed and availability are both expressions of this value. If someone can't develop urgency, it is ultimately a fireable offense.</div>
-          <div class="val-note">Distinction: Speed = table stakes (Three Uniques). Urgency = the internal disposition that produces speed.</div>
+          <div class="val-body">Ethical conduct in every transaction — including protecting parties we're not obligated to protect. Zero tolerance for internal dishonesty or cover-ups.</div>
+          <div class="val-note">The only hard-line immediate termination standard. All other values: coach first. This one: no second chance.</div>
         </div>
       </div>
 
@@ -670,7 +717,7 @@
         <div class="val-num">05</div>
         <div class="val-left">
           <div class="val-name">Extra Mile</div>
-          <div style="font-size:10px;color:var(--faint);font-weight:500;letter-spacing:0.5px;">working label</div>
+          <div style="font-size:10px;color:var(--faint);font-weight:500;letter-spacing:0.3px;">working label</div>
         </div>
         <div class="val-right">
           <div class="val-body">You see something and you act — for a teammate, a client, a competitor, the community — without being asked. Goes beyond what's required in every direction.</div>
@@ -685,11 +732,11 @@
 
   <!-- ══════════════════ CORE FOCUS ══════════════════ -->
   <section id="focus">
-    <div class="sec-head">
-      <span class="sec-num">02</span>
-      <h2>Core Focus</h2>
+    <div class="sec-label">
+      <span class="sec-tag">02</span>
+      <div class="sec-line"></div>
     </div>
-    <div class="rule"></div>
+    <h2>Core Focus</h2>
     <p class="sec-desc">Two sentences. Maximum. This is your lane — everything else is a distraction.</p>
 
     <div class="focus-pair">
@@ -730,11 +777,11 @@
 
   <!-- ══════════════════ ACCOUNTABILITY CHART ══════════════════ -->
   <section id="chart">
-    <div class="sec-head">
-      <span class="sec-num">03</span>
-      <h2>Accountability Chart</h2>
+    <div class="sec-label">
+      <span class="sec-tag">03</span>
+      <div class="sec-line"></div>
     </div>
-    <div class="rule"></div>
+    <h2>Accountability Chart</h2>
     <p class="sec-desc">Seats first, people second. One owner per seat. Draft — to be finalized in joint session with Justin.</p>
 
     <div class="ac-leadership">
@@ -749,7 +796,7 @@
             <li>Key external relationships (Gator, Sub2, Morby ecosystem)</li>
             <li>Capital raising relationships &amp; fund GP role</li>
             <li>Personal brand and community evangelism</li>
-            <li>Systems architecture &amp; AI automation <em style="color:var(--amber);font-size:11.5px;font-style:normal;font-weight:500;">(transitioning out)</em></li>
+            <li>Systems architecture &amp; AI automation <em style="color:var(--amber);font-size:11.5px;font-style:normal;font-weight:600;">(transitioning out)</em></li>
           </ul>
         </div>
       </div>
@@ -880,17 +927,17 @@
 
   <!-- ══════════════════ KEY ISSUES ══════════════════ -->
   <section id="issues">
-    <div class="sec-head">
-      <span class="sec-num">04</span>
-      <h2>Key Issues</h2>
+    <div class="sec-label">
+      <span class="sec-tag">04</span>
+      <div class="sec-line"></div>
     </div>
-    <div class="rule"></div>
+    <h2>Key Issues</h2>
     <p class="sec-desc">Captured from today's session. These go on the Issues List — solved in L10 IDS, not before.</p>
 
     <div class="issues-list">
       <div class="issue p-high">
         <div class="issue-n">1</div>
-        <div>
+        <div class="issue-content">
           <div class="issue-title">Paul is in too many operational seats</div>
           <div class="issue-body">Lending Ops, Back Office, AI Development, and Acquisitions all have Paul filling gaps. The business can't scale if the Visionary is running operations.</div>
           <div class="issue-path">Exits: Alana → Deal Communication (60–90 days) · AI system → Bookkeeping (Q3) · Christina → Back Office admin</div>
@@ -898,7 +945,7 @@
       </div>
       <div class="issue p-high">
         <div class="issue-n">2</div>
-        <div>
+        <div class="issue-content">
           <div class="issue-title">AI &amp; Automation Development has no owner or exit path</div>
           <div class="issue-body">Paul building AI/automation infrastructure is consuming significant Visionary hours with no handoff plan.</div>
           <div class="issue-path">Proposed Q3 Rock: "Build and document AI/automation stack, transition ownership by September 30."</div>
@@ -906,7 +953,7 @@
       </div>
       <div class="issue p-med">
         <div class="issue-n">3</div>
-        <div>
+        <div class="issue-content">
           <div class="issue-title">Justin's W2 transition clock is running</div>
           <div class="issue-body">Justin needs 6 consecutive months of &gt;$20K net profit before going full-time. Clock started April 2026. Earliest full-time = October 2026.</div>
           <div class="issue-path">Revenue trajectory is strong — this may be on track. Rocks must respect 8–12 hr/week bandwidth until then.</div>
@@ -914,7 +961,7 @@
       </div>
       <div class="issue p-med">
         <div class="issue-n">4</div>
-        <div>
+        <div class="issue-content">
           <div class="issue-title">Alana onboarding — Deal Communication transition</div>
           <div class="issue-body">60–90 day transition requires deal scripts, process documentation, shadowing protocol, and handoff metrics.</div>
           <div class="issue-path">Owner: Justin. Needs explicit onboarding plan.</div>
@@ -922,7 +969,7 @@
       </div>
       <div class="issue p-low">
         <div class="issue-n">5</div>
-        <div>
+        <div class="issue-content">
           <div class="issue-title">Fund Accountability Chart — separate document needed</div>
           <div class="issue-body">Pinecone Capital / ResGAP Plus LP is SEC-regulated and needs its own 3-seat chart distinct from the RQF operating chart.</div>
           <div class="issue-path">3 seats: Capital Raising · Fund Management · Investment Committee (Justin must be second member).</div>
@@ -935,11 +982,11 @@
 
   <!-- ══════════════════ NEXT STEPS ══════════════════ -->
   <section id="next">
-    <div class="sec-head">
-      <span class="sec-num">05</span>
-      <h2>Next Steps</h2>
+    <div class="sec-label">
+      <span class="sec-tag">05</span>
+      <div class="sec-line"></div>
     </div>
-    <div class="rule"></div>
+    <h2>Next Steps</h2>
     <p class="sec-desc">The EOS implementation sequence. Nothing happens out of order — each step unlocks the next.</p>
 
     <div class="steps-grid">
@@ -988,7 +1035,7 @@
   <div class="ft-title">Real Quick Funds — EOS Foundation</div>
   <p>Session date: May 25, 2026 &nbsp;·&nbsp; Visionary: Paul Brown &nbsp;·&nbsp; Integrator (designate): Justin Pilakka</p>
   <p>V/TO Status: Core Values ✓ &nbsp;·&nbsp; Core Focus ✓ &nbsp;·&nbsp; Accountability Chart (draft) &nbsp;·&nbsp; Sections 3–8 pending</p>
-  <p style="margin-top:10px;opacity:.5;font-style:italic;font-size:11.5px;">Working draft — nothing is final until both Paul and Justin have reviewed and agreed.</p>
+  <p style="margin-top:10px;opacity:.45;font-style:italic;font-size:11.5px;">Working draft — nothing is final until both Paul and Justin have reviewed and agreed.</p>
 </footer>
 
 </body>
