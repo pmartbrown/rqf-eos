@@ -881,26 +881,101 @@
       line-height: 1.6;
     }
 
-    /* ── SCORECARD PLACEHOLDER ───────────────── */
-    .scorecard-placeholder {
+    /* ── SCORECARD EMBED ─────────────────────── */
+    .sc-embed {
       background: var(--surface);
-      border: 2px dashed var(--border-mid);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 48px 40px;
-      text-align: center;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
     }
-    .sc-icon { font-size: 2.5rem; margin-bottom: 14px; opacity: .35; }
-    .sc-title { font-size: 1rem; font-weight: 600; color: var(--text-2); margin-bottom: 8px; }
-    .sc-body { font-size: 13.5px; color: var(--muted); line-height: 1.7; max-width: 500px; margin: 0 auto; }
-    .sc-metrics { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 20px; }
-    .sc-tag {
-      font-size: 11.5px;
+    .sc-live-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 20px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .sc-live-left { display: flex; align-items: center; }
+    .sc-live-dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+      animation: sc-pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes sc-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+    .sc-week-label { font-size: 13.5px; font-weight: 600; color: var(--text); }
+    .sc-live-right { display: flex; align-items: center; gap: 16px; }
+    .sc-tally { font-size: 12.5px; color: var(--muted); }
+    .sc-full-link {
+      font-size: 12.5px; font-weight: 600;
+      color: var(--blue); text-decoration: none;
+    }
+    .sc-full-link:hover { text-decoration: underline; }
+    .sc-loading { padding: 36px; text-align: center; color: var(--muted); font-size: 13.5px; }
+    /* Summary table */
+    .sc-table-wrap { overflow-x: auto; }
+    .sc-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .sc-table th {
+      padding: 10px 16px;
+      text-align: left;
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: .8px; text-transform: uppercase;
       color: var(--muted);
       background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 4px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
     }
+    .sc-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); }
+    .sc-table tbody tr:last-child td { border-bottom: none; }
+    .sc-table tbody tr:hover { background: rgba(29,87,216,0.03); }
+    .sc-metric-name { font-weight: 500; color: var(--text); }
+    .sc-owner {
+      font-size: 11px; font-weight: 600;
+      color: var(--muted); background: var(--surface-2);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 2px 8px; white-space: nowrap;
+    }
+    .sc-target { color: var(--muted); font-size: 13px; }
+    .sc-val-green { color: var(--green); font-weight: 700; }
+    .sc-val-red   { color: var(--red);   font-weight: 700; }
+    .sc-val-neutral { color: var(--text-2); }
+    .sc-avg-green { color: var(--green); }
+    .sc-avg-red   { color: var(--red); }
+    /* Tape */
+    .sc-tape-section {
+      border-top: 1px solid var(--border);
+      padding: 0;
+    }
+    .sc-tape-label {
+      padding: 10px 16px 6px;
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: .8px; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sc-tape-wrap { overflow-x: auto; padding: 0 0 4px; }
+    .sc-tape { border-collapse: collapse; font-size: 11.5px; min-width: 100%; }
+    .sc-tape th {
+      padding: 6px 8px; text-align: center;
+      font-size: 10px; font-weight: 700; color: var(--muted);
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .sc-tape th:first-child { text-align: left; padding-left: 16px; }
+    .sc-tape td { padding: 6px 8px; text-align: center; white-space: nowrap; }
+    .sc-tape td:first-child { text-align: left; padding-left: 16px; font-weight: 500; color: var(--text-2); font-size: 12px; }
+    .sc-t-green { color: var(--green); font-weight: 600; }
+    .sc-t-red   { color: var(--red);   font-weight: 600; }
+    .sc-t-na    { color: var(--faint); }
+    .sc-cur-row { background: var(--accent-light); }
+    .sc-cur-row td:first-child { color: var(--accent-dark); font-weight: 700; }
+    .sc-avg-row td { color: var(--muted); font-style: italic; font-size: 11px; border-top: 1px solid var(--border); }
 
     /* ── FOOTER ──────────────────────────────── */
     footer {
@@ -983,7 +1058,7 @@
     <span class="badge b-green"><span class="badge-dot"></span> Core Focus — Locked</span>
     <span class="badge b-amber"><span class="badge-dot"></span> V/TO Sections 3–8 — Working Draft</span>
     <span class="badge b-amber"><span class="badge-dot"></span> Accountability Chart — Draft</span>
-    <span class="badge b-muted"><span class="badge-dot"></span> Scorecard — Not Started</span>
+    <span class="badge b-green"><span class="badge-dot"></span> Scorecard — Live</span>
   </div>
 </header>
 
@@ -1768,22 +1843,46 @@
       <div class="sec-line"></div>
     </div>
     <h2>Scorecard</h2>
-    <p class="sec-desc">5–15 weekly leading indicators with Red/Green targets. Reviewed in the first 5 minutes of every L10. Not built yet — this is Phase 2 work.</p>
+    <p class="sec-desc">13 weekly leading indicators with Red/Green targets — reviewed in the first 5 minutes of every L10. Live data pulled from the RQF scorecard sheet each time this page loads.</p>
 
-    <div class="scorecard-placeholder">
-      <div class="sc-icon">📊</div>
-      <div class="sc-title">Scorecard — Not Yet Built</div>
-      <div class="sc-body">The Scorecard is built in Phase 2 (Days 30–60), after the V/TO and Accountability Chart are finalized. It becomes the dashboard for the business — reviewed every single L10 meeting. Every metric needs a weekly target, an owner, and a Red/Green definition.</div>
-      <div class="sc-metrics">
-        <span class="sc-tag">Deal inquiries / week</span>
-        <span class="sc-tag">Deals funded / week</span>
-        <span class="sc-tag">Weekly revenue</span>
-        <span class="sc-tag">Capital deployed</span>
-        <span class="sc-tag">Gator referral conversations</span>
-        <span class="sc-tag">Active borrower relationships</span>
-        <span class="sc-tag">Fund capital available</span>
-        <span class="sc-tag">L10 attendance</span>
-        <span class="sc-tag">Rocks on track</span>
+    <div class="sc-embed" id="sc-embed">
+      <div class="sc-live-header">
+        <div class="sc-live-left">
+          <span class="sc-live-dot"></span>
+          <span class="sc-week-label" id="sc-week">Loading…</span>
+        </div>
+        <div class="sc-live-right">
+          <span class="sc-tally" id="sc-tally"></span>
+          <a href="https://pmartbrown.github.io/rqf-eos/RQF_Scorecard.html" target="_blank" class="sc-full-link">Full scorecard ↗</a>
+        </div>
+      </div>
+
+      <div class="sc-loading" id="sc-loading">Loading scorecard data…</div>
+
+      <div id="sc-content" style="display:none">
+        <div class="sc-table-wrap">
+          <table class="sc-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Owner</th>
+                <th>Target</th>
+                <th>This Week</th>
+                <th>4-Wk Avg</th>
+              </tr>
+            </thead>
+            <tbody id="sc-tbody"></tbody>
+          </table>
+        </div>
+        <div class="sc-tape-section">
+          <div class="sc-tape-label">16-Week Trend</div>
+          <div class="sc-tape-wrap">
+            <table class="sc-tape">
+              <thead id="sc-tape-head"></thead>
+              <tbody id="sc-tape-body"></tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1793,9 +1892,154 @@
 <footer>
   <div class="ft-title">Real Quick Funds — EOS Foundation</div>
   <p>Session date: May 25, 2026 &nbsp;·&nbsp; Visionary: Paul Brown &nbsp;·&nbsp; Integrator: Justin Pilakka</p>
-  <p>V/TO: Core Values ✓ &nbsp;·&nbsp; Core Focus ✓ &nbsp;·&nbsp; Sections 3–8 drafted &nbsp;·&nbsp; Accountability Chart (draft) &nbsp;·&nbsp; Scorecard (not started)</p>
+  <p>V/TO: Core Values ✓ &nbsp;·&nbsp; Core Focus ✓ &nbsp;·&nbsp; Sections 3–8 drafted &nbsp;·&nbsp; Accountability Chart (draft) &nbsp;·&nbsp; Scorecard ✓ Live</p>
   <p style="margin-top:10px;opacity:.45;font-style:italic;font-size:11.5px;">Working draft — nothing is final until both Paul and Justin have reviewed and agreed.</p>
 </footer>
 
+<script>
+// ── RQF EOS Embedded Scorecard ──────────────────────────────────────────────
+(function() {
+  const SC_SHEET_ID = '11XBlQalEVWXyMvP307OquGbqSav7hjDaN9yDRYlUiFs';
+
+  const SC_METRICS = [
+    { name:'Deal Submissions',       abbrev:'Sub',  owner:'Justin', target:10,    dir:'up',  fmt:'number'   },
+    { name:'Deals Approved',         abbrev:'Appr', owner:'Justin', target:7,     dir:'up',  fmt:'number'   },
+    { name:'Deals Declined',         abbrev:'Dec',  owner:'Justin', target:null,  dir:null,  fmt:'number'   },
+    { name:'Deals Funded',           abbrev:'Fund', owner:'Justin', target:6,     dir:'up',  fmt:'number'   },
+    { name:'HML/DSCR Referrals',    abbrev:'Ref',  owner:'Justin', target:2,     dir:'up',  fmt:'number'   },
+    { name:'Revenue Collected',      abbrev:'Rev',  owner:'Justin', target:12000, dir:'up',  fmt:'currency' },
+    { name:'Capital Available',      abbrev:'Cap$', owner:'Paul',   target:null,  dir:null,  fmt:'currency' },
+    { name:'Capital Deployed %',     abbrev:'Cap%', owner:'Paul',   target:70,    dir:'up',  fmt:'percent'  },
+    { name:'New Borrower Convos',    abbrev:'Conv', owner:'Paul',   target:3,     dir:'up',  fmt:'number'   },
+    { name:'Repeat Borrower Deals',  abbrev:'Rpt',  owner:'Justin', target:2,     dir:'up',  fmt:'number'   },
+    { name:'Capital Deployed',       abbrev:'CapD', owner:'Justin', target:200000,dir:'up',  fmt:'currency' },
+    { name:'Community Posts',        abbrev:'Com',  owner:'Paul',   target:3,     dir:'up',  fmt:'number'   },
+    { name:'Social Posts',           abbrev:'Soc',  owner:'Paul',   target:5,     dir:'up',  fmt:'number'   },
+  ];
+
+  const scFmt = (v, f) => {
+    if (v === null || v === undefined || isNaN(v)) return '—';
+    if (f === 'currency') return v >= 1e6 ? '$'+(v/1e6).toFixed(1)+'M' : v >= 1e3 ? '$'+(v/1e3).toFixed(0)+'K' : '$'+v.toFixed(0);
+    if (f === 'percent')  return v.toFixed(0)+'%';
+    return Number.isInteger(v) ? String(v) : v.toFixed(1);
+  };
+
+  const scColor = (v, m) => {
+    if (v === null || !m.dir || m.target === null) return 'neutral';
+    return (m.dir === 'up' ? v >= m.target : v <= m.target) ? 'green' : 'red';
+  };
+
+  const scAvg = (rows, idx, n) => {
+    const vals = rows.slice(0, n).map(r => r.v[idx]).filter(v => v !== null);
+    return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
+  };
+
+  const scFmtDate = str => {
+    const d = new Date(str + 'T12:00:00');
+    return d.toLocaleDateString('en-US', { month:'short', day:'numeric' });
+  };
+
+  const scTargetLabel = m => {
+    if (m.target === null) return '—';
+    const p = m.dir === 'up' ? '≥' : m.dir === 'down' ? '≤' : '';
+    return p + scFmt(m.target, m.fmt);
+  };
+
+  function scParseCSV(text) {
+    const lines = text.trim().split(/\r?\n/);
+    const rows = [];
+    for (let i = 1; i < lines.length; i++) {
+      const cols = lines[i].split(',').map(c => c.replace(/^"|"$/g,'').trim());
+      if (!cols[0]) continue;
+      const v = cols.slice(1, 14).map(c => {
+        const s = c.replace(/[$,%]/g,'').trim();
+        return s === '' || s === '-' ? null : parseFloat(s);
+      });
+      rows.push({ weekOf: cols[0], v });
+    }
+    rows.sort((a,b) => new Date(b.weekOf) - new Date(a.weekOf));
+    return rows;
+  }
+
+  function scRender(rows) {
+    if (!rows.length) return;
+    const displayRow = rows.find(r => r.v.some(v=>v!==null)) || rows[0];
+
+    document.getElementById('sc-week').textContent = 'Week of ' + scFmtDate(rows[0].weekOf);
+
+    const greenCount = SC_METRICS.filter((m,i) => displayRow.v[i] !== null && scColor(displayRow.v[i],m) === 'green').length;
+    const redCount   = SC_METRICS.filter((m,i) => displayRow.v[i] !== null && scColor(displayRow.v[i],m) === 'red').length;
+    document.getElementById('sc-tally').textContent = greenCount + ' green · ' + redCount + ' red';
+
+    // Summary table
+    const tbody = document.getElementById('sc-tbody');
+    tbody.innerHTML = '';
+    SC_METRICS.forEach((m, i) => {
+      const cur = displayRow.v[i];
+      const a4  = scAvg(rows, i, 4);
+      const cc  = scColor(cur, m);
+      const ac  = scColor(a4, m);
+      const curCls = cc === 'green' ? 'sc-val-green' : cc === 'red' ? 'sc-val-red' : 'sc-val-neutral';
+      const avgCls = ac === 'green' ? 'sc-avg-green' : ac === 'red' ? 'sc-avg-red' : '';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td><span class="sc-metric-name">${m.name}</span></td>
+        <td><span class="sc-owner">${m.owner}</span></td>
+        <td class="sc-target">${scTargetLabel(m)}</td>
+        <td class="${curCls}">${scFmt(cur, m.fmt)}</td>
+        <td class="${avgCls}">${scFmt(a4, m.fmt)}</td>`;
+      tbody.appendChild(tr);
+    });
+
+    // Tape header
+    document.getElementById('sc-tape-head').innerHTML =
+      '<tr><th>Week</th>' + SC_METRICS.map(m=>`<th title="${m.name}">${m.abbrev}</th>`).join('') + '</tr>';
+
+    // Tape body (current + up to 15 prior weeks)
+    const tb = document.getElementById('sc-tape-body');
+    tb.innerHTML = '';
+    rows.slice(0, 17).forEach((row, idx) => {
+      const tr = document.createElement('tr');
+      if (idx === 0) tr.classList.add('sc-cur-row');
+      const weekStr = scFmtDate(row.weekOf) + (idx === 0 ? ' ★' : '');
+      const cells = SC_METRICS.map((m,i) => {
+        const v = row.v[i];
+        if (v === null) return '<td class="sc-t-na">—</td>';
+        const c = scColor(v, m);
+        return `<td class="${c==='green'?'sc-t-green':c==='red'?'sc-t-red':''}">${scFmt(v,m.fmt)}</td>`;
+      }).join('');
+      tr.innerHTML = `<td>${weekStr}</td>${cells}`;
+      tb.appendChild(tr);
+    });
+
+    // Averages
+    const avg4Row = document.createElement('tr');
+    avg4Row.className = 'sc-avg-row';
+    avg4Row.innerHTML = '<td>4-Wk Avg</td>' +
+      SC_METRICS.map((_,i) => {
+        const a = scAvg(rows,i,4);
+        const c = scColor(a, SC_METRICS[i]);
+        return `<td class="${c==='green'?'sc-t-green':c==='red'?'sc-t-red':''}">${scFmt(a,SC_METRICS[i].fmt)}</td>`;
+      }).join('');
+    tb.appendChild(avg4Row);
+
+    document.getElementById('sc-loading').style.display = 'none';
+    document.getElementById('sc-content').style.display = 'block';
+  }
+
+  async function scLoad() {
+    const url = `https://docs.google.com/spreadsheets/d/${SC_SHEET_ID}/gviz/tq?tqx=out:csv&gid=0`;
+    try {
+      const r = await fetch(url);
+      const t = await r.text();
+      scRender(scParseCSV(t));
+    } catch(e) {
+      document.getElementById('sc-loading').textContent = 'Unable to load scorecard data. Open the full scorecard to view.';
+      console.error('Scorecard load error:', e);
+    }
+  }
+
+  scLoad();
+})();
+</script>
 </body>
 </html>
