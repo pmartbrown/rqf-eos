@@ -490,33 +490,13 @@ function render(rows) {
   const tb = document.getElementById('tape-body');
   tb.innerHTML = '';
 
-  // 4-week average row
-  const avgRow4 = document.createElement('tr');
-  avgRow4.className = 'avg-row';
-  avgRow4.innerHTML = `<td>4-Wk Avg</td>` +
-    METRICS.map((_,i) => {
-      const a = avg(rows,i,4);
-      return `<td class="${color(a,METRICS[i])}">${fmt(a,METRICS[i].format)}</td>`;
-    }).join('');
-  tb.appendChild(avgRow4);
+  const mkSep = () => {
+    const s = document.createElement('tr');
+    s.innerHTML = `<td colspan="${METRICS.length+1}" style="padding:0;height:1px;background:var(--border)"></td>`;
+    return s;
+  };
 
-  // 90-day average row
-  const avgRow90 = document.createElement('tr');
-  avgRow90.className = 'avg-row';
-  avgRow90.innerHTML = `<td>90-Day Avg</td>` +
-    METRICS.map((_,i) => {
-      const a = avg(rows,i,13);
-      return `<td class="${color(a,METRICS[i])}">${fmt(a,METRICS[i].format)}</td>`;
-    }).join('');
-  tb.appendChild(avgRow90);
-
-  // Separator
-  const sep = document.createElement('tr');
-  sep.innerHTML = `<td colspan="${METRICS.length+1}" style="padding:0;height:1px;background:var(--border)"></td>`;
-  tb.appendChild(sep);
-
-  // Weekly tape
-  rows.slice(0, 17).forEach((row, idx) => {
+  const mkWeekRow = (row, idx) => {
     const tr = document.createElement('tr');
     if (idx === 0) tr.classList.add('cur-row');
     const weekStr = fmtDate(row.weekOf) + (idx === 0 ? ' ★' : '');
@@ -527,8 +507,35 @@ function render(rows) {
       return `<td class="${c==='green'?'t-green':c==='red'?'t-red':''}">${fmt(v,m.format)}</td>`;
     }).join('');
     tr.innerHTML = `<td class="t-week">${weekStr}</td>${cells}`;
-    tb.appendChild(tr);
-  });
+    return tr;
+  };
+
+  // 1. Current week — top row
+  tb.appendChild(mkWeekRow(rows[0], 0));
+  tb.appendChild(mkSep());
+
+  // 2. Prior weeks
+  rows.slice(1, 17).forEach((row, idx) => tb.appendChild(mkWeekRow(row, idx + 1)));
+  tb.appendChild(mkSep());
+
+  // 3. Averages at bottom
+  const avgRow4 = document.createElement('tr');
+  avgRow4.className = 'avg-row';
+  avgRow4.innerHTML = `<td>4-Wk Avg</td>` +
+    METRICS.map((_,i) => {
+      const a = avg(rows,i,4);
+      return `<td class="${color(a,METRICS[i])}">${fmt(a,METRICS[i].format)}</td>`;
+    }).join('');
+  tb.appendChild(avgRow4);
+
+  const avgRow90 = document.createElement('tr');
+  avgRow90.className = 'avg-row';
+  avgRow90.innerHTML = `<td>90-Day Avg</td>` +
+    METRICS.map((_,i) => {
+      const a = avg(rows,i,13);
+      return `<td class="${color(a,METRICS[i])}">${fmt(a,METRICS[i].format)}</td>`;
+    }).join('');
+  tb.appendChild(avgRow90);
 }
 
 // ── Fetch & load ────────────────────────────────
