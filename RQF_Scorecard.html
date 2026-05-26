@@ -287,7 +287,7 @@
     </p>
     <div class="sheet-structure">
       Tab name: <strong>Data</strong><br>
-      Row 1 (headers): WeekOf | Submissions | Approved | Declined | Funded | HML_DSCR_Refs | Revenue | CapAvailable | CapDeployedPct | NewConvos | RepeatDeals | CommunityPosts | SocialPosts<br>
+      Row 1 (headers): WeekOf | Submissions | Approved | Declined | Funded | HML_DSCR_Refs | Revenue | CapAvailable | CapDeployedPct | NewConvos | RepeatDeals | CapDeployed | CommunityPosts | SocialPosts<br>
       Row 2+: One row per week. WeekOf = YYYY-MM-DD (Monday of that week). Numbers only — no $ or % symbols.<br>
       Leave a cell blank if you don't have that week's number yet.
     </div>
@@ -366,6 +366,7 @@ const METRICS = [
   { name:'Capital Deployed %',     abbrev:'Cap%', owner:'Paul',   target:70,    direction:'up',  format:'percent'  },
   { name:'New Borrower Convos',    abbrev:'Conv', owner:'Paul',   target:3,     direction:'up',  format:'number'   },
   { name:'Repeat Borrower Deals',  abbrev:'Rpt',  owner:'Justin', target:2,     direction:'up',  format:'number'   },
+  { name:'Capital Deployed',       abbrev:'Cap$D',owner:'Justin', target:200000,direction:'up',  format:'currency' },
   { name:'Community Posts',        abbrev:'Com',  owner:'Paul',   target:3,     direction:'up',  format:'number'   },
   { name:'Social Posts',           abbrev:'Soc',  owner:'Paul',   target:5,     direction:'up',  format:'number'   },
 ];
