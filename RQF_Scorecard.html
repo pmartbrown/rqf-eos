@@ -6,18 +6,18 @@
   <title>RQF Scorecard</title>
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface2: #1c2128;
-      --border: #30363d;
-      --text: #e6edf3;
-      --text-muted: #7d8590;
-      --green-text: #3fb950;
-      --green-bg: rgba(63,185,80,0.08);
-      --red-text: #f85149;
-      --red-bg: rgba(248,81,73,0.08);
-      --blue: #1f6feb;
-      --gold: #d29922;
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface2: #f0f2f5;
+      --border: #e1e4e8;
+      --text: #1a1f2e;
+      --text-muted: #6b7280;
+      --green-text: #16a34a;
+      --green-bg: rgba(22,163,74,0.08);
+      --red-text: #dc2626;
+      --red-bg: rgba(220,38,38,0.08);
+      --blue: #2563eb;
+      --gold: #b45309;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -31,6 +31,7 @@
     header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
       padding: 18px 32px;
       display: flex;
       justify-content: space-between;
@@ -222,8 +223,8 @@
     }
     .tape-table tbody td:first-child { text-align: left; }
     .tape-table tbody tr:last-child td { border-bottom: none; }
-    .tape-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
-    .tape-table tbody tr.cur-row td { background: rgba(31,111,235,0.07); }
+    .tape-table tbody tr:hover td { background: rgba(0,0,0,0.02); }
+    .tape-table tbody tr.cur-row td { background: rgba(37,99,235,0.06); }
     .tape-table tbody tr.cur-row td:first-child { font-weight: 700; color: var(--text); }
 
     .t-week { font-size: 11px; color: var(--text-muted); }
