@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RQF Scorecard</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface2: #f0f2f5;
+      --border: #e1e4e8;
+      --text: #1a1f2e;
+      --text-muted: #6b7280;
+      --green-text: #16a34a;
+      --green-bg: rgba(22,163,74,0.08);
+      --red-text: #dc2626;
+      --red-bg: rgba(220,38,38,0.08);
+      --blue: #2563eb;
+      --gold: #b45309;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      padding: 18px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 38px; height: 38px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 15px; color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .brand-label h1 { font-size: 16px; font-weight: 700; }
+    .brand-label p { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; margin-top: 1px; }
+    .header-right { text-align: right; }
+    .week-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .week-date { font-size: 15px; font-weight: 600; margin-top: 2px; }
+    .refresh-btn {
+      margin-top: 5px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 3px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: color 0.15s;
+    }
+    .refresh-btn:hover { color: var(--text); }
+    main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
+    .setup-banner {
+      background: var(--surface);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      display: none;
+    }
+    .setup-banner h3 { color: var(--gold); font-size: 13px; margin-bottom: 8px; }
+    .setup-banner p { color: var(--text-muted); font-size: 13px; line-height: 1.7; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
+    .section-badge { font-size: 10px; background: var(--surface2); border: 1px solid var(--border); color: var(--text-muted); padding: 2px 7px; border-radius: 10px; }
+    .summary-section { margin-bottom: 36px; }
+    .summary-wrap { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .summary-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .summary-table thead th { padding: 9px 14px; text-align: right; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); background: var(--surface); border-bottom: 1px solid var(--border); font-weight: 500; }
+    .summary-table thead th:first-child { text-align: left; }
+    .summary-table thead th:nth-child(2) { text-align: center; }
+    .summary-table tbody tr:hover td { background: var(--surface2); }
+    .summary-table tbody tr:last-child td { border-bottom: none; }
+    .summary-table tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .summary-table tbody td:nth-child(2) { text-align: center; }
+    .metric-name { font-weight: 500; font-size: 13.5px; }
+    .owner-tag { display: inline-block; font-size: 10px; color: var(--text-muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; }
+    .target-cell { text-align: right; font-size: 12px; color: var(--text-muted); }
+    .col-current { text-align: right; font-weight: 700; font-size: 16px; padding: 11px 18px; min-width: 110px; }
+    .col-avg { text-align: right; font-weight: 500; font-size: 13.5px; padding: 11px 18px; min-width: 100px; }
+    .green { color: var(--green-text); }
+    .red { color: var(--red-text); }
+    .neutral { color: var(--text-muted); }
+    .cur-green { color: var(--green-text); background: var(--green-bg); }
+    .cur-red { color: var(--red-text); background: var(--red-bg); }
+    .cur-neutral { color: var(--text-muted); }
+    .tape-section { margin-top: 36px; }
+    .tape-outer { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .tape-scroll { overflow-x: auto; }
+    .tape-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 960px; }
+    .tape-table thead th { padding: 8px 10px; text-align: right; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); background: var(--surface); border-bottom: 1px solid var(--border); white-space: nowrap; font-weight: 500; }
+    .tape-table thead th:first-child { text-align: left; min-width: 90px; }
+    .tape-table tbody td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--border); font-weight: 500; }
+    .tape-table tbody td:first-child { text-align: left; }
+    .tape-table tbody tr:last-child td { border-bottom: none; }
+    .tape-table tbody tr:hover td { background: rgba(0,0,0,0.02); }
+    .tape-table tbody tr.cur-row td { background: rgba(37,99,235,0.06); }
+    .tape-table tbody tr.cur-row td:first-child { font-weight: 700; color: var(--text); }
+    .t-week { font-size: 11px; color: var(--text-muted); }
+    .t-green { color: var(--green-text); }
+    .t-red { color: var(--red-text); }
+    .t-na { color: var(--border); }
+    .avg-row td { background: var(--surface2) !important; font-size: 11px; color: var(--text-muted); font-style: italic; border-top: 1px solid var(--border); }
+    footer { text-align: center; padding: 32px; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 48px; }
+    footer a { color: var(--blue); text-decoration: none; }
+    @media (max-width: 768px) { main { padding: 16px; } header { padding: 14px 16px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-mark">RQF</div>
+    <div class="brand-label">
+      <h1>Real Quick Funds</h1>
+      <p>EOS Scorecard</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="week-label">Current Week</div>
+    <div class="week-date" id="week-display">—</div>
+    <button class="refresh-btn" onclick="loadData()">&#x21BB; Refresh</button>
+  </div>
+</header>
+
+<main>
+
+  <div class="setup-banner" id="setup-banner">
+    <h3>Data unavailable — showing sample data</h3>
+    <p>Could not fetch live data from Google Sheets. Check that the sheet is shared publicly.</p>
+  </div>
+
+  <div class="summary-section">
+    <div class="section-header">
+      <span class="section-title">Weekly Summary</span>
+      <span class="section-badge" id="summary-badge">—</span>
+    </div>
+    <div class="summary-wrap">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;width:28%">Metric</th>
+            <th style="width:10%">Owner</th>
+            <th style="width:10%">Target</th>
+            <th style="width:17%">Current Week</th>
+            <th style="width:17%">4-Wk Avg</th>
+            <th style="width:18%">90-Day Avg</th>
+          </tr>
+        </thead>
+        <tbody id="summary-body">
+          <tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:36px">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tape-section">
+    <div class="section-header">
+      <span class="section-title">Historical Record</span>
+      <span class="section-badge">Last 120 Days</span>
+    </div>
+    <div class="tape-outer">
+      <div class="tape-scroll">
+        <table class="tape-table">
+          <thead id="tape-head"></thead>
+          <tbody id="tape-body">
+            <tr><td colspan="14" style="text-align:center;color:var(--text-muted);padding:24px">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Real Quick Funds &middot; EOS Scorecard &middot;
+  <a href="index.html">&larr; Back to EOS Dashboard</a> &middot;
+  Data source: Google Sheets &middot; Updated on page load
+</footer>
+
+<script>
+const SHEET_ID  = '11XBlQalEVWXyMvP307OquGbqSav7hjDaN9yDRYlUiFs';
+const SHEET_GID = '0';
+
+const METRICS = [
+  { name:'Deal Submissions',      abbrev:'Sub',   owner:'Justin', target:20,     direction:'up',  format:'number'   },
+  { name:'Deals Approved',        abbrev:'Appr',  owner:'Justin', target:6,      direction:'up',  format:'number'   },
+  { name:'Deals Declined',        abbrev:'Dec',   owner:'Justin', target:null,   direction:null,  format:'number'   },
+  { name:'Deals Funded',          abbrev:'Fund',  owner:'Justin', target:2,      direction:'up',  format:'number'   },
+  { name:'HML/DSCR Submissions',  abbrev:'HDS',   owner:'Justin', target:5,      direction:'up',  format:'number'   },
+  { name:'Revenue Collected',     abbrev:'Rev',   owner:'Justin', target:12000,  direction:'up',  format:'currency' },
+  { name:'Capital Available',     abbrev:'Cap$',  owner:'Paul',   target:null,   direction:null,  format:'currency' },
+  { name:'Capital Deployed %',    abbrev:'Cap%',  owner:'Paul',   target:70,     direction:'up',  format:'percent'  },
+  { name:'New Borrower Convos',   abbrev:'Conv',  owner:'Paul',   target:3,      direction:'up',  format:'number'   },
+  { name:'Repeat Borrower Deals', abbrev:'Rpt',   owner:'Justin', target:2,      direction:'up',  format:'number'   },
+  { name:'Capital Deployed',      abbrev:'Cap$D', owner:'Justin', target:200000, direction:'up',  format:'currency' },
+  { name:'Community Posts',       abbrev:'Com',   owner:'Paul',   target:3,      direction:'up',  format:'number'   },
+  { name:'Social Posts',          abbrev:'Soc',   owner:'Paul',   target:5,      direction:'up',  format:'number'   },
+];
+
+const fmt = (val, format) => {
+  if (val === null || val === undefined || isNaN(val)) return '—';
+  switch (format) {
+    case 'currency':
+      return val >= 1e6 ? '$'+(val/1e6).toFixed(1)+'M'
+           : val >= 1e3 ? '$'+(val/1e3).toFixed(0)+'K'
+           : '$'+val.toFixed(0);
+    case 'percent': return val.toFixed(0)+'%';
+    default: return Number.isInteger(val) ? String(val) : val.toFixed(1);
+  }
+};
+
+const color = (val, m) => {
+  if (val === null || !m.direction || m.target === null) return 'neutral';
+  return (m.direction === 'up' ? val >= m.target : val <= m.target) ? 'green' : 'red';
+};
+
+const avg = (rows, idx, n) => {
+  const vals = rows.slice(0, n).map(r => r.v[idx]).filter(v => v !== null);
+  return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
+};
+
+const fmtDate = str => {
+  const d = new Date(str + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { month:'short', day:'numeric' });
+};
+
+const targetLabel = m => {
+  if (m.target === null) return '—';
+  const prefix = m.direction === 'up' ? '≥' : m.direction === 'down' ? '≤' : '';
+  return prefix + fmt(m.target, m.format);
+};
+
+function splitCsvLine(line) {
+  const cols = []; let cur = ''; let inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') { inQ = !inQ; }
+    else if (ch === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+    else { cur += ch; }
+  }
+  cols.push(cur.trim());
+  return cols;
+}
+
+function parseCSV(text) {
+  const lines = text.trim().split(/\r?\n/);
+  const rows  = [];
+  for (let i = 1; i < lines.length; i++) {
+    const cols = splitCsvLine(lines[i]);
+    if (!cols[0]) continue;
+    const v = cols.slice(1, 14).map(c => {
+      const s = c.replace(/[$,%]/g,'').trim();
+      return s === '' || s === '-' ? null : parseFloat(s);
+    });
+    rows.push({ weekOf: cols[0], v });
+  }
+  rows.sort((a,b) => new Date(b.weekOf) - new Date(a.weekOf));
+  return rows;
+}
+
+function sampleData() {
+  const monday = (() => {
+    const d = new Date(); const day = d.getDay();
+    d.setDate(d.getDate() - (day === 0 ? 6 : day - 1)); return d;
+  })();
+  return Array.from({length:18}, (_,w) => {
+    const d = new Date(monday); d.setDate(monday.getDate() - w*7);
+    const rnd = (lo,hi) => Math.round(lo + Math.random()*(hi-lo));
+    return {
+      weekOf: d.toISOString().split('T')[0],
+      v: w === 0 ? Array(13).fill(null) : [
+        rnd(7,14), rnd(5,11), rnd(1,4), rnd(1,3), rnd(1,4),
+        rnd(10,35)*1000, rnd(600,1200)*1000, rnd(60,88),
+        rnd(2,6), rnd(1,4), rnd(500,900)*1000, rnd(2,6), rnd(4,9)
+      ]
+    };
+  });
+}
+
+function render(rows) {
+  if (!rows.length) return;
+
+  const displayRow = rows.find(r => r.v.some(v=>v!==null)) || rows[0];
+  document.getElementById('week-display').textContent = 'Week of ' + fmtDate(rows[0].weekOf);
+
+  const greenCount = METRICS.filter((m,i) => { const v = displayRow.v[i]; return v !== null && color(v,m) === 'green'; }).length;
+  const redCount   = METRICS.filter((m,i) => { const v = displayRow.v[i]; return v !== null && color(v,m) === 'red';   }).length;
+  document.getElementById('summary-badge').textContent = greenCount + ' green · ' + redCount + ' red';
+
+  const sb = document.getElementById('summary-body');
+  sb.innerHTML = '';
+  METRICS.forEach((m,i) => {
+    const cur = displayRow.v[i];
+    const a4  = avg(rows, i, 4);
+    const a90 = avg(rows, i, 13);
+    const cc  = color(cur,m);
+    const curClass = cc === 'green' ? 'cur-green' : cc === 'red' ? 'cur-red' : 'cur-neutral';
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td><span class="metric-name">' + m.name + '</span></td>' +
+      '<td><span class="owner-tag">' + m.owner + '</span></td>' +
+      '<td class="target-cell">' + targetLabel(m) + '</td>' +
+      '<td class="col-current ' + curClass + '">' + fmt(cur,m.format) + '</td>' +
+      '<td class="col-avg ' + color(a4,m) + '">' + fmt(a4,m.format) + '</td>' +
+      '<td class="col-avg ' + color(a90,m) + '">' + fmt(a90,m.format) + '</td>';
+    sb.appendChild(tr);
+  });
+
+  document.getElementById('tape-head').innerHTML =
+    '<tr><th>Week</th>' + METRICS.map(m=>'<th title="' + m.name + '">' + m.abbrev + '</th>').join('') + '</tr>';
+
+  const tb = document.getElementById('tape-body');
+  tb.innerHTML = '';
+
+  const mkSep = () => {
+    const s = document.createElement('tr');
+    s.innerHTML = '<td colspan="' + (METRICS.length+1) + '" style="padding:0;height:1px;background:var(--border)"></td>';
+    return s;
+  };
+
+  const mkWeekRow = (row, idx) => {
+    const tr = document.createElement('tr');
+    if (idx === 0) tr.classList.add('cur-row');
+    const weekStr = fmtDate(row.weekOf) + (idx === 0 ? ' ★' : '');
+    const cells = METRICS.map((m,i) => {
+      const v = row.v[i];
+      if (v === null) return '<td class="t-na">—</td>';
+      const c = color(v,m);
+      return '<td class="' + (c==='green'?'t-green':c==='red'?'t-red':'') + '">' + fmt(v,m.format) + '</td>';
+    }).join('');
+    tr.innerHTML = '<td class="t-week">' + weekStr + '</td>' + cells;
+    return tr;
+  };
+
+  tb.appendChild(mkWeekRow(rows[0], 0));
+  tb.appendChild(mkSep());
+  rows.slice(1, 17).forEach((row, idx) => tb.appendChild(mkWeekRow(row, idx + 1)));
+  tb.appendChild(mkSep());
+
+  const avgRow4 = document.createElement('tr');
+  avgRow4.className = 'avg-row';
+  avgRow4.innerHTML = '<td>4-Wk Avg</td>' +
+    METRICS.map((_,i) => { const a = avg(rows,i,4);  return '<td class="' + color(a,METRICS[i]) + '">' + fmt(a,METRICS[i].format) + '</td>'; }).join('');
+  tb.appendChild(avgRow4);
+
+  const avgRow90 = document.createElement('tr');
+  avgRow90.className = 'avg-row';
+  avgRow90.innerHTML = '<td>90-Day Avg</td>' +
+    METRICS.map((_,i) => { const a = avg(rows,i,13); return '<td class="' + color(a,METRICS[i]) + '">' + fmt(a,METRICS[i].format) + '</td>'; }).join('');
+  tb.appendChild(avgRow90);
+}
+
+async function loadData() {
+  const url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv&gid=' + SHEET_GID;
+  let rows;
+  try {
+    const r = await fetch(url);
+    const t = await r.text();
+    rows = parseCSV(t);
+    if (!rows.length) throw new Error('empty');
+  } catch(e) {
+    console.error('Sheet fetch failed:', e);
+    document.getElementById('setup-banner').style.display = 'block';
+    rows = sampleData();
+  }
+  render(rows);
+}
+
+loadData();
+</script>
+</body>
+</html>
