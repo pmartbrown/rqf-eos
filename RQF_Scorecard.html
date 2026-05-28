@@ -506,7 +506,7 @@ function render(rows) {
       const v = row.v[i];
       if (v === null) return `<td class="t-na">—</td>`;
       const c = color(v,m);
-      return `<td class="${c==='green'?'t-green':c==='red'?'t-red':''}">${fmt(v,m.format)}</td>`;
+      return `<td class="${c==='green'?'t-green':c==='red'?'t-red':'''}">${fmt(v,m.format)}</td>`;
     }).join('');
     tr.innerHTML = `<td class="t-week">${weekStr}</td>${cells}`;
     return tr;
