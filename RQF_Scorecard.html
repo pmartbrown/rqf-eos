@@ -26,8 +26,6 @@
       color: var(--text);
       min-height: 100vh;
     }
-
-    /* ── HEADER ── */
     header {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
@@ -66,11 +64,7 @@
       transition: color 0.15s;
     }
     .refresh-btn:hover { color: var(--text); }
-
-    /* ── MAIN ── */
     main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
-
-    /* ── SETUP BANNER ── */
     .setup-banner {
       background: var(--surface);
       border: 1px solid var(--gold);
@@ -81,29 +75,6 @@
     }
     .setup-banner h3 { color: var(--gold); font-size: 13px; margin-bottom: 8px; }
     .setup-banner p { color: var(--text-muted); font-size: 13px; line-height: 1.7; }
-    .setup-banner code {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 1px 6px;
-      border-radius: 3px;
-      font-family: 'SF Mono', monospace;
-      font-size: 11px;
-      color: var(--text);
-    }
-    .setup-banner .sheet-structure {
-      margin-top: 14px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 14px 16px;
-      font-family: 'SF Mono', monospace;
-      font-size: 11px;
-      color: var(--text-muted);
-      line-height: 2;
-      overflow-x: auto;
-    }
-
-    /* ── SECTION TITLES ── */
     .section-header {
       display: flex;
       align-items: center;
@@ -112,150 +83,49 @@
       padding-bottom: 10px;
       border-bottom: 1px solid var(--border);
     }
-    .section-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--text-muted);
-    }
-    .section-badge {
-      font-size: 10px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 2px 7px;
-      border-radius: 10px;
-    }
-
-    /* ── SUMMARY TABLE ── */
+    .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
+    .section-badge { font-size: 10px; background: var(--surface2); border: 1px solid var(--border); color: var(--text-muted); padding: 2px 7px; border-radius: 10px; }
     .summary-section { margin-bottom: 36px; }
-    .summary-wrap {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
+    .summary-wrap { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
     .summary-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-    .summary-table thead th {
-      padding: 9px 14px;
-      text-align: right;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      font-weight: 500;
-    }
+    .summary-table thead th { padding: 9px 14px; text-align: right; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); background: var(--surface); border-bottom: 1px solid var(--border); font-weight: 500; }
     .summary-table thead th:first-child { text-align: left; }
     .summary-table thead th:nth-child(2) { text-align: center; }
-    .summary-table thead th:nth-child(3) { text-align: right; }
     .summary-table tbody tr:hover td { background: var(--surface2); }
     .summary-table tbody tr:last-child td { border-bottom: none; }
-    .summary-table tbody td {
-      padding: 11px 14px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
+    .summary-table tbody td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
     .summary-table tbody td:nth-child(2) { text-align: center; }
-
     .metric-name { font-weight: 500; font-size: 13.5px; }
-    .owner-tag {
-      display: inline-block;
-      font-size: 10px;
-      color: var(--text-muted);
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2px 7px;
-    }
+    .owner-tag { display: inline-block; font-size: 10px; color: var(--text-muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; }
     .target-cell { text-align: right; font-size: 12px; color: var(--text-muted); }
-
-    /* Current week column — prominent */
-    .col-current {
-      text-align: right;
-      font-weight: 700;
-      font-size: 16px;
-      padding: 11px 18px;
-      min-width: 110px;
-    }
-    .col-avg {
-      text-align: right;
-      font-weight: 500;
-      font-size: 13.5px;
-      padding: 11px 18px;
-      min-width: 100px;
-    }
-
+    .col-current { text-align: right; font-weight: 700; font-size: 16px; padding: 11px 18px; min-width: 110px; }
+    .col-avg { text-align: right; font-weight: 500; font-size: 13.5px; padding: 11px 18px; min-width: 100px; }
     .green { color: var(--green-text); }
     .red { color: var(--red-text); }
     .neutral { color: var(--text-muted); }
     .cur-green { color: var(--green-text); background: var(--green-bg); }
     .cur-red { color: var(--red-text); background: var(--red-bg); }
     .cur-neutral { color: var(--text-muted); }
-
-    /* ── TAPE TABLE ── */
     .tape-section { margin-top: 36px; }
-    .tape-outer {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
+    .tape-outer { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
     .tape-scroll { overflow-x: auto; }
     .tape-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 960px; }
-    .tape-table thead th {
-      padding: 8px 10px;
-      text-align: right;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--text-muted);
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-      font-weight: 500;
-    }
+    .tape-table thead th { padding: 8px 10px; text-align: right; font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); background: var(--surface); border-bottom: 1px solid var(--border); white-space: nowrap; font-weight: 500; }
     .tape-table thead th:first-child { text-align: left; min-width: 90px; }
-    .tape-table tbody td {
-      padding: 7px 10px;
-      text-align: right;
-      border-bottom: 1px solid var(--border);
-      font-weight: 500;
-    }
+    .tape-table tbody td { padding: 7px 10px; text-align: right; border-bottom: 1px solid var(--border); font-weight: 500; }
     .tape-table tbody td:first-child { text-align: left; }
     .tape-table tbody tr:last-child td { border-bottom: none; }
     .tape-table tbody tr:hover td { background: rgba(0,0,0,0.02); }
     .tape-table tbody tr.cur-row td { background: rgba(37,99,235,0.06); }
     .tape-table tbody tr.cur-row td:first-child { font-weight: 700; color: var(--text); }
-
     .t-week { font-size: 11px; color: var(--text-muted); }
     .t-green { color: var(--green-text); }
     .t-red { color: var(--red-text); }
     .t-na { color: var(--border); }
-
-    /* ── AVERAGES DIVIDER ROW ── */
-    .avg-row td {
-      background: var(--surface2) !important;
-      font-size: 11px;
-      color: var(--text-muted);
-      font-style: italic;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 32px;
-      font-size: 11px;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      margin-top: 48px;
-    }
+    .avg-row td { background: var(--surface2) !important; font-size: 11px; color: var(--text-muted); font-style: italic; border-top: 1px solid var(--border); }
+    footer { text-align: center; padding: 32px; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 48px; }
     footer a { color: var(--blue); text-decoration: none; }
-
-    @media (max-width: 768px) {
-      main { padding: 16px; }
-      header { padding: 14px 16px; }
-    }
+    @media (max-width: 768px) { main { padding: 16px; } header { padding: 14px 16px; } }
   </style>
 </head>
 <body>
@@ -271,30 +141,17 @@
   <div class="header-right">
     <div class="week-label">Current Week</div>
     <div class="week-date" id="week-display">—</div>
-    <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+    <button class="refresh-btn" onclick="loadData()">&#x21BB; Refresh</button>
   </div>
 </header>
 
 <main>
 
-  <!-- SETUP BANNER -->
   <div class="setup-banner" id="setup-banner">
-    <h3>⚙ Connect Your Google Sheet</h3>
-    <p>
-      Replace <code>YOUR_SHEET_ID_HERE</code> in this file with your Google Sheet ID
-      (the long string between <code>/d/</code> and <code>/edit</code> in your Sheet URL).<br>
-      The Sheet must be shared as <strong>"Anyone with the link can view"</strong> — no login required to read it.<br>
-      Currently showing <strong>sample data</strong> so you can see how the layout works.
-    </p>
-    <div class="sheet-structure">
-      Tab name: <strong>Data</strong><br>
-      Row 1 (headers): WeekOf | Submissions | Approved | Declined | Funded | HML_DSCR_Submissions | Revenue | CapAvailable | CapDeployedPct | NewConvos | RepeatDeals | CapDeployed | CommunityPosts | SocialPosts<br>
-      Row 2+: One row per week. WeekOf = YYYY-MM-DD (Monday of that week). Numbers only — no $ or % symbols.<br>
-      Leave a cell blank if you don't have that week's number yet.
-    </div>
+    <h3>Data unavailable — showing sample data</h3>
+    <p>Could not fetch live data from Google Sheets. Check that the sheet is shared publicly.</p>
   </div>
 
-  <!-- SUMMARY -->
   <div class="summary-section">
     <div class="section-header">
       <span class="section-title">Weekly Summary</span>
@@ -319,7 +176,6 @@
     </div>
   </div>
 
-  <!-- TAPE -->
   <div class="tape-section">
     <div class="section-header">
       <span class="section-title">Historical Record</span>
@@ -330,7 +186,7 @@
         <table class="tape-table">
           <thead id="tape-head"></thead>
           <tbody id="tape-body">
-            <tr><td colspan="13" style="text-align:center;color:var(--text-muted);padding:24px">Loading...</td></tr>
+            <tr><td colspan="14" style="text-align:center;color:var(--text-muted);padding:24px">Loading...</td></tr>
           </tbody>
         </table>
       </div>
@@ -340,39 +196,31 @@
 </main>
 
 <footer>
-  Real Quick Funds · EOS Scorecard ·
-  <a href="index.html">← Back to EOS Dashboard</a> ·
-  Data source: Google Sheets · Updated on page load
+  Real Quick Funds &middot; EOS Scorecard &middot;
+  <a href="index.html">&larr; Back to EOS Dashboard</a> &middot;
+  Data source: Google Sheets &middot; Updated on page load
 </footer>
 
 <script>
-// ═══════════════════════════════════════════════════
-// CONFIG — paste your Google Sheet ID below
-// ═══════════════════════════════════════════════════
 const SHEET_ID  = '11XBlQalEVWXyMvP307OquGbqSav7hjDaN9yDRYlUiFs';
-const SHEET_TAB = 'Sheet1';
+const SHEET_GID = '1700460041';
 
-// ── Metric definitions ──────────────────────────
-// direction: 'up' = higher is better | 'down' = lower is better | null = informational only
-// format: 'number' | 'currency' | 'percent'
-// target: weekly Green threshold (null = no color coding)
 const METRICS = [
-  { name:'Deal Submissions',       abbrev:'Sub',  owner:'Justin', target:20,    direction:'up',  format:'number'   },
-  { name:'Deals Approved',         abbrev:'Appr', owner:'Justin', target:6,     direction:'up',  format:'number'   },
-  { name:'Deals Declined',         abbrev:'Dec',  owner:'Justin', target:null,  direction:null,  format:'number'   },
-  { name:'Deals Funded',           abbrev:'Fund', owner:'Justin', target:2,     direction:'up',  format:'number'   },
-  { name:'HML/DSCR Submissions',  abbrev:'HDS',  owner:'Justin', target:5,     direction:'up',  format:'number'   },
-  { name:'Revenue Collected',      abbrev:'Rev',  owner:'Justin', target:12000, direction:'up',  format:'currency' },
-  { name:'Capital Available',      abbrev:'Cap$', owner:'Paul',   target:null,  direction:null,  format:'currency' },
-  { name:'Capital Deployed %',     abbrev:'Cap%', owner:'Paul',   target:70,    direction:'up',  format:'percent'  },
-  { name:'New Borrower Convos',    abbrev:'Conv', owner:'Paul',   target:3,     direction:'up',  format:'number'   },
-  { name:'Repeat Borrower Deals',  abbrev:'Rpt',  owner:'Justin', target:2,     direction:'up',  format:'number'   },
-  { name:'Capital Deployed',       abbrev:'Cap$D',owner:'Justin', target:200000,direction:'up',  format:'currency' },
-  { name:'Community Posts',        abbrev:'Com',  owner:'Paul',   target:3,     direction:'up',  format:'number'   },
-  { name:'Social Posts',           abbrev:'Soc',  owner:'Paul',   target:5,     direction:'up',  format:'number'   },
+  { name:'Deal Submissions',      abbrev:'Sub',   owner:'Justin', target:20,     direction:'up',  format:'number'   },
+  { name:'Deals Approved',        abbrev:'Appr',  owner:'Justin', target:6,      direction:'up',  format:'number'   },
+  { name:'Deals Declined',        abbrev:'Dec',   owner:'Justin', target:null,   direction:null,  format:'number'   },
+  { name:'Deals Funded',          abbrev:'Fund',  owner:'Justin', target:2,      direction:'up',  format:'number'   },
+  { name:'HML/DSCR Submissions',  abbrev:'HDS',   owner:'Justin', target:5,      direction:'up',  format:'number'   },
+  { name:'Revenue Collected',     abbrev:'Rev',   owner:'Justin', target:12000,  direction:'up',  format:'currency' },
+  { name:'Capital Available',     abbrev:'Cap$',  owner:'Paul',   target:null,   direction:null,  format:'currency' },
+  { name:'Capital Deployed %',    abbrev:'Cap%',  owner:'Paul',   target:70,     direction:'up',  format:'percent'  },
+  { name:'New Borrower Convos',   abbrev:'Conv',  owner:'Paul',   target:3,      direction:'up',  format:'number'   },
+  { name:'Repeat Borrower Deals', abbrev:'Rpt',   owner:'Justin', target:2,      direction:'up',  format:'number'   },
+  { name:'Capital Deployed',      abbrev:'Cap$D', owner:'Justin', target:200000, direction:'up',  format:'currency' },
+  { name:'Community Posts',       abbrev:'Com',   owner:'Paul',   target:3,      direction:'up',  format:'number'   },
+  { name:'Social Posts',          abbrev:'Soc',   owner:'Paul',   target:5,      direction:'up',  format:'number'   },
 ];
 
-// ── Helpers ─────────────────────────────────────
 const fmt = (val, format) => {
   if (val === null || val === undefined || isNaN(val)) return '—';
   switch (format) {
@@ -406,7 +254,6 @@ const targetLabel = m => {
   return prefix + fmt(m.target, m.format);
 };
 
-// ── CSV parser ──────────────────────────────────
 function parseCSV(text) {
   const lines = text.trim().split(/\r?\n/);
   const rows  = [];
@@ -423,7 +270,6 @@ function parseCSV(text) {
   return rows;
 }
 
-// ── Sample data (shown when Sheet ID not set) ───
 function sampleData() {
   const monday = (() => {
     const d = new Date(); const day = d.getDay();
@@ -435,64 +281,52 @@ function sampleData() {
     return {
       weekOf: d.toISOString().split('T')[0],
       v: w === 0 ? Array(13).fill(null) : [
-        rnd(14,25), rnd(4,8), rnd(1,4), rnd(1,4), rnd(3,7),
+        rnd(7,14), rnd(5,11), rnd(1,4), rnd(1,3), rnd(1,4),
         rnd(10,35)*1000, rnd(600,1200)*1000, rnd(60,88),
-        rnd(2,6), rnd(1,4), rnd(150,350)*1000, rnd(2,6), rnd(4,9)
+        rnd(2,6), rnd(1,4), rnd(500,900)*1000, rnd(2,6), rnd(4,9)
       ]
     };
   });
 }
 
-// ── Render ──────────────────────────────────────
 function render(rows) {
   if (!rows.length) return;
 
   const displayRow = rows.find(r => r.v.some(v=>v!==null)) || rows[0];
   document.getElementById('week-display').textContent = 'Week of ' + fmtDate(rows[0].weekOf);
 
-  const greenCount = METRICS.filter((m,i) => {
-    const v = displayRow.v[i];
-    return v !== null && color(v,m) === 'green';
-  }).length;
-  const redCount = METRICS.filter((m,i) => {
-    const v = displayRow.v[i];
-    return v !== null && color(v,m) === 'red';
-  }).length;
-  document.getElementById('summary-badge').textContent =
-    `${greenCount} green · ${redCount} red`;
+  const greenCount = METRICS.filter((m,i) => { const v = displayRow.v[i]; return v !== null && color(v,m) === 'green'; }).length;
+  const redCount   = METRICS.filter((m,i) => { const v = displayRow.v[i]; return v !== null && color(v,m) === 'red';   }).length;
+  document.getElementById('summary-badge').textContent = greenCount + ' green · ' + redCount + ' red';
 
-  // ── Summary table
   const sb = document.getElementById('summary-body');
   sb.innerHTML = '';
   METRICS.forEach((m,i) => {
-    const cur  = displayRow.v[i];
-    const a4   = avg(rows, i, 4);
-    const a90  = avg(rows, i, 13);
-    const cc   = color(cur,m);
+    const cur = displayRow.v[i];
+    const a4  = avg(rows, i, 4);
+    const a90 = avg(rows, i, 13);
+    const cc  = color(cur,m);
     const curClass = cc === 'green' ? 'cur-green' : cc === 'red' ? 'cur-red' : 'cur-neutral';
     const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><span class="metric-name">${m.name}</span></td>
-      <td><span class="owner-tag">${m.owner}</span></td>
-      <td class="target-cell">${targetLabel(m)}</td>
-      <td class="col-current ${curClass}">${fmt(cur,m.format)}</td>
-      <td class="col-avg ${color(a4,m)}">${fmt(a4,m.format)}</td>
-      <td class="col-avg ${color(a90,m)}">${fmt(a90,m.format)}</td>
-    `;
+    tr.innerHTML =
+      '<td><span class="metric-name">' + m.name + '</span></td>' +
+      '<td><span class="owner-tag">' + m.owner + '</span></td>' +
+      '<td class="target-cell">' + targetLabel(m) + '</td>' +
+      '<td class="col-current ' + curClass + '">' + fmt(cur,m.format) + '</td>' +
+      '<td class="col-avg ' + color(a4,m) + '">' + fmt(a4,m.format) + '</td>' +
+      '<td class="col-avg ' + color(a90,m) + '">' + fmt(a90,m.format) + '</td>';
     sb.appendChild(tr);
   });
 
-  // ── Tape header
   document.getElementById('tape-head').innerHTML =
-    `<tr><th>Week</th>${METRICS.map(m=>`<th title="${m.name}">${m.abbrev}</th>`).join('')}</tr>`;
+    '<tr><th>Week</th>' + METRICS.map(m=>'<th title="' + m.name + '">' + m.abbrev + '</th>').join('') + '</tr>';
 
-  // ── Tape rows
   const tb = document.getElementById('tape-body');
   tb.innerHTML = '';
 
   const mkSep = () => {
     const s = document.createElement('tr');
-    s.innerHTML = `<td colspan="${METRICS.length+1}" style="padding:0;height:1px;background:var(--border)"></td>`;
+    s.innerHTML = '<td colspan="' + (METRICS.length+1) + '" style="padding:0;height:1px;background:var(--border)"></td>';
     return s;
   };
 
@@ -502,11 +336,11 @@ function render(rows) {
     const weekStr = fmtDate(row.weekOf) + (idx === 0 ? ' ★' : '');
     const cells = METRICS.map((m,i) => {
       const v = row.v[i];
-      if (v === null) return `<td class="t-na">—</td>`;
+      if (v === null) return '<td class="t-na">—</td>';
       const c = color(v,m);
-      return `<td class="${c==='green'?'t-green':c==='red'?'t-red':'''}">${fmt(v,m.format)}</td>`;
+      return '<td class="' + (c==='green'?'t-green':c==='red'?'t-red':'') + '">' + fmt(v,m.format) + '</td>';
     }).join('');
-    tr.innerHTML = `<td class="t-week">${weekStr}</td>${cells}`;
+    tr.innerHTML = '<td class="t-week">' + weekStr + '</td>' + cells;
     return tr;
   };
 
@@ -517,40 +351,29 @@ function render(rows) {
 
   const avgRow4 = document.createElement('tr');
   avgRow4.className = 'avg-row';
-  avgRow4.innerHTML = `<td>4-Wk Avg</td>` +
-    METRICS.map((_,i) => {
-      const a = avg(rows,i,4);
-      return `<td class="${color(a,METRICS[i])}">${fmt(a,METRICS[i].format)}</td>`;
-    }).join('');
+  avgRow4.innerHTML = '<td>4-Wk Avg</td>' +
+    METRICS.map((_,i) => { const a = avg(rows,i,4);  return '<td class="' + color(a,METRICS[i]) + '">' + fmt(a,METRICS[i].format) + '</td>'; }).join('');
   tb.appendChild(avgRow4);
 
   const avgRow90 = document.createElement('tr');
   avgRow90.className = 'avg-row';
-  avgRow90.innerHTML = `<td>90-Day Avg</td>` +
-    METRICS.map((_,i) => {
-      const a = avg(rows,i,13);
-      return `<td class="${color(a,METRICS[i])}">${fmt(a,METRICS[i].format)}</td>`;
-    }).join('');
+  avgRow90.innerHTML = '<td>90-Day Avg</td>' +
+    METRICS.map((_,i) => { const a = avg(rows,i,13); return '<td class="' + color(a,METRICS[i]) + '">' + fmt(a,METRICS[i].format) + '</td>'; }).join('');
   tb.appendChild(avgRow90);
 }
 
-// ── Fetch & load
 async function loadData() {
+  const url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv&gid=' + SHEET_GID;
   let rows;
-  if (false) {
+  try {
+    const r = await fetch(url);
+    const t = await r.text();
+    rows = parseCSV(t);
+    if (!rows.length) throw new Error('empty');
+  } catch(e) {
+    console.error('Sheet fetch failed:', e);
     document.getElementById('setup-banner').style.display = 'block';
     rows = sampleData();
-  } else {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=1700460041`;
-    try {
-      const r = await fetch(url);
-      const t = await r.text();
-      rows = parseCSV(t);
-    } catch(e) {
-      console.error(e);
-      document.getElementById('setup-banner').style.display = 'block';
-      rows = sampleData();
-    }
   }
   render(rows);
 }
