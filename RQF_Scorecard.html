@@ -288,7 +288,7 @@
     </p>
     <div class="sheet-structure">
       Tab name: <strong>Data</strong><br>
-      Row 1 (headers): WeekOf | Submissions | Approved | Declined | Funded | HML_DSCR_Refs | Revenue | CapAvailable | CapDeployedPct | NewConvos | RepeatDeals | CapDeployed | CommunityPosts | SocialPosts<br>
+      Row 1 (headers): WeekOf | Submissions | Approved | Declined | Funded | HML_DSCR_Submissions | Revenue | CapAvailable | CapDeployedPct | NewConvos | RepeatDeals | CapDeployed | CommunityPosts | SocialPosts<br>
       Row 2+: One row per week. WeekOf = YYYY-MM-DD (Monday of that week). Numbers only — no $ or % symbols.<br>
       Leave a cell blank if you don't have that week's number yet.
     </div>
@@ -350,18 +350,18 @@
 // CONFIG — paste your Google Sheet ID below
 // ═══════════════════════════════════════════════════
 const SHEET_ID  = '11XBlQalEVWXyMvP307OquGbqSav7hjDaN9yDRYlUiFs';
-const SHEET_TAB = 'Sheet1'; // Default tab name — rename in Google Sheets if desired
+const SHEET_TAB = 'Sheet1';
 
 // ── Metric definitions ──────────────────────────
 // direction: 'up' = higher is better | 'down' = lower is better | null = informational only
 // format: 'number' | 'currency' | 'percent'
 // target: weekly Green threshold (null = no color coding)
 const METRICS = [
-  { name:'Deal Submissions',       abbrev:'Sub',  owner:'Justin', target:10,    direction:'up',  format:'number'   },
-  { name:'Deals Approved',         abbrev:'Appr', owner:'Justin', target:7,     direction:'up',  format:'number'   },
+  { name:'Deal Submissions',       abbrev:'Sub',  owner:'Justin', target:20,    direction:'up',  format:'number'   },
+  { name:'Deals Approved',         abbrev:'Appr', owner:'Justin', target:6,     direction:'up',  format:'number'   },
   { name:'Deals Declined',         abbrev:'Dec',  owner:'Justin', target:null,  direction:null,  format:'number'   },
-  { name:'Deals Funded',           abbrev:'Fund', owner:'Justin', target:6,     direction:'up',  format:'number'   },
-  { name:'HML/DSCR Referrals',    abbrev:'Ref',  owner:'Justin', target:2,     direction:'up',  format:'number'   },
+  { name:'Deals Funded',           abbrev:'Fund', owner:'Justin', target:2,     direction:'up',  format:'number'   },
+  { name:'HML/DSCR Submissions',  abbrev:'HDS',  owner:'Justin', target:5,     direction:'up',  format:'number'   },
   { name:'Revenue Collected',      abbrev:'Rev',  owner:'Justin', target:12000, direction:'up',  format:'currency' },
   { name:'Capital Available',      abbrev:'Cap$', owner:'Paul',   target:null,  direction:null,  format:'currency' },
   { name:'Capital Deployed %',     abbrev:'Cap%', owner:'Paul',   target:70,    direction:'up',  format:'percent'  },
@@ -413,7 +413,7 @@ function parseCSV(text) {
   for (let i = 1; i < lines.length; i++) {
     const cols = lines[i].split(',').map(c => c.replace(/^"|"$/g,'').trim());
     if (!cols[0]) continue;
-    const v = cols.slice(1, 13).map(c => {
+    const v = cols.slice(1, 14).map(c => {
       const s = c.replace(/[$,%]/g,'').trim();
       return s === '' || s === '-' ? null : parseFloat(s);
     });
@@ -434,10 +434,10 @@ function sampleData() {
     const rnd = (lo,hi) => Math.round(lo + Math.random()*(hi-lo));
     return {
       weekOf: d.toISOString().split('T')[0],
-      v: w === 0 ? Array(12).fill(null) : [
-        rnd(7,14), rnd(5,11), rnd(1,4), rnd(5,10), rnd(1,4),
+      v: w === 0 ? Array(13).fill(null) : [
+        rnd(14,25), rnd(4,8), rnd(1,4), rnd(1,4), rnd(3,7),
         rnd(10,35)*1000, rnd(600,1200)*1000, rnd(60,88),
-        rnd(2,6), rnd(1,4), rnd(2,6), rnd(4,9)
+        rnd(2,6), rnd(1,4), rnd(150,350)*1000, rnd(2,6), rnd(4,9)
       ]
     };
   });
@@ -447,7 +447,6 @@ function sampleData() {
 function render(rows) {
   if (!rows.length) return;
 
-  // Find best display row (most recent with any data)
   const displayRow = rows.find(r => r.v.some(v=>v!==null)) || rows[0];
   document.getElementById('week-display').textContent = 'Week of ' + fmtDate(rows[0].weekOf);
 
@@ -462,7 +461,7 @@ function render(rows) {
   document.getElementById('summary-badge').textContent =
     `${greenCount} green · ${redCount} red`;
 
-  // ── Summary table ────────────────────────────
+  // ── Summary table
   const sb = document.getElementById('summary-body');
   sb.innerHTML = '';
   METRICS.forEach((m,i) => {
@@ -471,7 +470,6 @@ function render(rows) {
     const a90  = avg(rows, i, 13);
     const cc   = color(cur,m);
     const curClass = cc === 'green' ? 'cur-green' : cc === 'red' ? 'cur-red' : 'cur-neutral';
-
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><span class="metric-name">${m.name}</span></td>
@@ -484,11 +482,11 @@ function render(rows) {
     sb.appendChild(tr);
   });
 
-  // ── Tape header ──────────────────────────────
+  // ── Tape header
   document.getElementById('tape-head').innerHTML =
     `<tr><th>Week</th>${METRICS.map(m=>`<th title="${m.name}">${m.abbrev}</th>`).join('')}</tr>`;
 
-  // ── Tape rows (last 120 days ≈ 17 weeks) ─────
+  // ── Tape rows
   const tb = document.getElementById('tape-body');
   tb.innerHTML = '';
 
@@ -512,15 +510,11 @@ function render(rows) {
     return tr;
   };
 
-  // 1. Current week — top row
   tb.appendChild(mkWeekRow(rows[0], 0));
   tb.appendChild(mkSep());
-
-  // 2. Prior weeks
   rows.slice(1, 17).forEach((row, idx) => tb.appendChild(mkWeekRow(row, idx + 1)));
   tb.appendChild(mkSep());
 
-  // 3. Averages at bottom
   const avgRow4 = document.createElement('tr');
   avgRow4.className = 'avg-row';
   avgRow4.innerHTML = `<td>4-Wk Avg</td>` +
@@ -540,10 +534,10 @@ function render(rows) {
   tb.appendChild(avgRow90);
 }
 
-// ── Fetch & load ────────────────────────────────
+// ── Fetch & load
 async function loadData() {
   let rows;
-  if (false) { // Sheet ID is configured
+  if (false) {
     document.getElementById('setup-banner').style.display = 'block';
     rows = sampleData();
   } else {
