@@ -1896,8 +1896,10 @@
     return (m.dir === 'up' ? v >= m.target : v <= m.target) ? 'green' : 'red';
   };
 
+  // Excludes the current week (rows[0]) — current week is partial and would skew the average.
+  // 4-Wk Avg = weeks 2-5 (rows[1..4]). 12-Wk Avg (if added) = weeks 2-13 (rows[1..12]).
   const scAvg = (rows, idx, n) => {
-    const vals = rows.slice(0, n).map(r => r.v[idx]).filter(v => v !== null);
+    const vals = rows.slice(1, n + 1).map(r => r.v[idx]).filter(v => v !== null);
     return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
   };
 
