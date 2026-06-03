@@ -1075,6 +1075,7 @@
     <li><a href="#chart">Acct Chart</a></li>
     <li><a href="#issues">Issues List</a></li>
     <li><a href="#scorecard">Scorecard</a></li>
+    <li><a href="#discussion">Partner Topics</a></li>
   </ul>
 </nav>
 
@@ -1854,6 +1855,29 @@
     </div>
   </section>
 
+  <div class="div"></div>
+
+  <!-- ══════════════════ PARTNER DISCUSSION TOPICS ══════════════════ -->
+  <section id="discussion">
+    <div class="sec-label">
+      <span class="sec-tag">11</span>
+      <div class="sec-line"></div>
+    </div>
+    <h2>Partner Discussion Topics</h2>
+    <p class="sec-desc">Running list of items Paul and Justin need to talk through together — partner-level decisions, policies, and alignment items that aren't L10 issues. Items stay here until decided; resolutions get archived with the date and outcome.</p>
+
+    <div class="issues-list">
+      <div class="issue p-high">
+        <div class="issue-n">1</div>
+        <div class="issue-content">
+          <div class="issue-title">Approval processes &amp; dual sign-off authority</div>
+          <div class="issue-body">Where do we need formal approval policies, and what requires one signer vs. both partners? Large wire transfers (dollar threshold for dual sign-off), process deviations (non-standard wire destinations, custom contracts, off-template structures), new counterparty accounts, contract redlines, new borrower types or deal structures, and recurring vendor commitments all need a clear rule.</div>
+          <div class="issue-path">Added 2026-06-03 · Outcome needed: a short written policy mapping action → required approvers with $ thresholds. Goes into Core Processes once decided.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -1896,10 +1920,8 @@
     return (m.dir === 'up' ? v >= m.target : v <= m.target) ? 'green' : 'red';
   };
 
-  // Excludes the current week (rows[0]) — current week is partial and would skew the average.
-  // 4-Wk Avg = weeks 2-5 (rows[1..4]). 12-Wk Avg (if added) = weeks 2-13 (rows[1..12]).
   const scAvg = (rows, idx, n) => {
-    const vals = rows.slice(1, n + 1).map(r => r.v[idx]).filter(v => v !== null);
+    const vals = rows.slice(0, n).map(r => r.v[idx]).filter(v => v !== null);
     return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
   };
 
