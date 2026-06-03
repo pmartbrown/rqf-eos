@@ -1920,8 +1920,9 @@
     return (m.dir === 'up' ? v >= m.target : v <= m.target) ? 'green' : 'red';
   };
 
+  // Excludes current week (rows[0]) — current week is partial and would skew averages.
   const scAvg = (rows, idx, n) => {
-    const vals = rows.slice(0, n).map(r => r.v[idx]).filter(v => v !== null);
+    const vals = rows.slice(1, n + 1).map(r => r.v[idx]).filter(v => v !== null);
     return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
   };
 
